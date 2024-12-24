@@ -4,6 +4,15 @@ Console.WriteLine("Hello, World!");
 Console.WriteLine("Produse");
 
 
-ProdusGeneric pita = new ProdusPerisabil("pita",5,new DateTime(2024, 12, 31),"uscat si racoros");
+ProdusGeneric pita = new ProdusPerisabil("pita",5,1,new DateTime(2024, 12, 31),"uscat si racoros");
 
 Console.WriteLine(pita);
+
+Magazin magazin1 = new AdministrareMagazin("magazin1");
+
+magazin1.AdaugaProdus(pita);
+magazin1.AfiseazaProduse();
+
+
+
+
