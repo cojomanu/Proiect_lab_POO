@@ -1,15 +1,15 @@
 ﻿namespace Magazin_online;
 
-public class AdministrareMagazin
+public class AdministrareMagazin: Magazin
 {
-    private List<ProdusGeneric> Produse = new List<ProdusGeneric>();
-
-    public void AdaugaProdus(ProdusGeneric produs)
+    
+    public AdministrareMagazin(string nume) : base(nume) { }
+    public override void AdaugaProdus(ProdusGeneric produs)
     {
         Produse.Add(produs);
     }
 
-    public void AfiseazaProduse()
+    public override void AfiseazaProduse()
     {
         Console.WriteLine("Produsele sunt : ");
         foreach (var produs in Produse)
