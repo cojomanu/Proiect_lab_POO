@@ -5,8 +5,7 @@ public class ProdusElectrocasnic: ProdusGeneric
     public string ClasaDeEficientaEnergetica { get; private set; }
     public int PutereMaximaConsumata { get; private set; }
 
-    public ProdusElectrocasnic(string nume, decimal pret,string clasaDeEficientaEnergetica, int putereMaximaConsumata ) : base(nume,
-        pret)
+    public ProdusElectrocasnic(string nume, decimal pret,int stoc, string clasaDeEficientaEnergetica, int putereMaximaConsumata ) : base(nume, pret,stoc)
     {
         this.ClasaDeEficientaEnergetica = clasaDeEficientaEnergetica;
         this.PutereMaximaConsumata = putereMaximaConsumata;
