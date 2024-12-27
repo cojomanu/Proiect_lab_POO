@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
+using Magazin_online;
 using Magazin_online;
 Console.WriteLine("Hello, World!");
 Console.WriteLine("Produse");
@@ -10,8 +12,14 @@ Console.WriteLine(pita);
 
 Magazin magazin1 = new Magazin("magazin1");
 
-magazin1.AdaugaProdus(pita);
-magazin1.AfiseazaProduse();
+ComenziUtilizator comenziUtilizator = new ComenziUtilizator(magazin1);
+
+comenziUtilizator.AdaugaProdus(pita);
+comenziUtilizator.AfiseazaProduse();
+
+
+
+
 
 
 

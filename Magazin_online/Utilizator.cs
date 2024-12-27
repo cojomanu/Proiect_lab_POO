@@ -1,7 +1,7 @@
-﻿namespace DefaultNamespace;
+﻿namespace Magazin_online;
 
 public interface Utilizator
 {
-    public abstract void AdaugaProdus(ProdusGeneric produs);
-    public abstract void AfiseazaProduse();
+    public void AdaugaProdus(ProdusGeneric produs);
+    public void AfiseazaProduse();
 }

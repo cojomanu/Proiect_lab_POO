@@ -1,16 +1,23 @@
-﻿namespace DefaultNamespace;
+﻿namespace Magazin_online;
 
-public class ComenziUtilizator: Utilizator
-{ 
-    public override void AdaugaProdus(ProdusGeneric produs)
+public class ComenziUtilizator : Utilizator
+{
+    private Magazin _magazin;
+
+    public ComenziUtilizator(Magazin magazin)
     {
-        Produse.Add(produs);
+        _magazin = magazin;
     }
 
-    public override void AfiseazaProduse()
+    public void AdaugaProdus(ProdusGeneric produs)
     {
-        Console.WriteLine("Produsele sunt : ");
-        foreach (var produs in Produse)
+        _magazin.Produse.Add(produs);
+    }
+
+    public void AfiseazaProduse()
+    {
+        Console.WriteLine("Produsele din magazin sunt: ");
+        foreach (var produs in _magazin.Produse)
         {
             Console.WriteLine(produs);
         }
