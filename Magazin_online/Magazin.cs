@@ -1,6 +1,6 @@
 ﻿namespace Magazin_online;
 
-public  abstract class Magazin
+public class Magazin
 {
     public List<ProdusGeneric> Produse { get;private set; }
 
@@ -12,8 +12,5 @@ public  abstract class Magazin
         Produse = new List<ProdusGeneric>();
     }
     
-    public abstract void AdaugaProdus(ProdusGeneric produs);
-    public abstract void AfiseazaProduse();
-
-
+  
 }

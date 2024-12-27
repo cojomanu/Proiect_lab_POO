@@ -8,7 +8,7 @@ ProdusGeneric pita = new ProdusPerisabil("pita",5,1,new DateTime(2024, 12, 31),"
 
 Console.WriteLine(pita);
 
-Magazin magazin1 = new AdministrareMagazin("magazin1");
+Magazin magazin1 = new Magazin("magazin1");
 
 magazin1.AdaugaProdus(pita);
 magazin1.AfiseazaProduse();
