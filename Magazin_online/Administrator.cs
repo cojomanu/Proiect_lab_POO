@@ -1,7 +1,6 @@
 ﻿namespace Magazin_online;
 
-public class AdministrareMagazin 
+public interface Administrator
 {
     
-   
 }

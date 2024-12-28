@@ -1,18 +1,41 @@
-﻿namespace DefaultNamespace;
+﻿namespace Magazin_online;
 
-public class ComenziUtilizator: Utilizator
-{ 
-    public override void AdaugaProdus(ProdusGeneric produs)
+public class ComenziUtilizator : Utilizator
+{
+    private Magazin _magazin;
+
+    public ComenziUtilizator(Magazin magazin)
     {
-        Produse.Add(produs);
+        _magazin = magazin;
     }
 
-    public override void AfiseazaProduse()
+    public void AdaugaProdus(ProdusGeneric produs)
     {
-        Console.WriteLine("Produsele sunt : ");
-        foreach (var produs in Produse)
+        _magazin.Produse.Add(produs);
+    }
+
+    public void AfiseazaProduse()
+    {
+        Console.WriteLine("Produsele din magazin sunt: ");
+        foreach (var produs in _magazin.Produse)
         {
             Console.WriteLine(produs);
         }
+    }
+
+    public void CautareProdusDupaNume(string nume)
+    {
+        foreach (var produs in _magazin.Produse)
+        {
+            if (produs.Nume == nume)
+                Console.WriteLine($"Da produsul {produs} se afla in magazin!");
+            else
+                Console.WriteLine("Produs inexistent!");
+        }
+    }
+
+    public void OrdonareProduseDupaPret()
+    {
+        _magazin.Produse.Sort((p1, p2) => p1.Pret.CompareTo(p2.Pret));
     }
 }
