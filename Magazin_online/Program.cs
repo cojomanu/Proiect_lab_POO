@@ -18,6 +18,7 @@ comenziUtilizator.AdaugaProdus(apa);
 comenziUtilizator.AfiseazaProduse();
 comenziUtilizator.OrdonareProduseDupaPret();
 comenziUtilizator.AfiseazaProduse();
+Console.WriteLine("xox");
 
 
 
