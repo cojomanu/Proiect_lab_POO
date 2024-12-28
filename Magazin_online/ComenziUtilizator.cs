@@ -37,5 +37,6 @@ public class ComenziUtilizator : Utilizator
     public void OrdonareProduseDupaPret()
     {
         _magazin.Produse.Sort((p1, p2) => p1.Pret.CompareTo(p2.Pret));
+        Console.WriteLine("Goron e tampit");
     }
 }
