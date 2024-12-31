@@ -180,17 +180,43 @@ while (!exit)
                                    comenziAdministrator.Adaugare_produs(produs_generic);
                                    comenziUtilizator.AfisareProduse();
                                    break;
+                               // case 2:
+                               //     DateTime data_expirare;
+                               //     string conditii_pastrare;
+                               //     Console.WriteLine("Introduceti data de expirare a produsului:");
+                               //     data_expirare=DateTime.Parse(Console.ReadLine());
+                               //     Console.WriteLine("Introduceti conditiile de pastrare ale produsului:");
+                               //     conditii_pastrare=Console.ReadLine();
+                               //     ProdusGeneric produs_perisabil = new ProdusPerisabil(nume, pret, stoc,data_expirare,conditii_pastrare);
+                               //     comenziAdministrator.Adaugare_produs(produs_perisabil);
+                               //     comenziUtilizator.AfisareProduse();
+                               //     break;
                                case 2:
                                    DateTime data_expirare;
                                    string conditii_pastrare;
                                    Console.WriteLine("Introduceti data de expirare a produsului:");
-                                   data_expirare=DateTime.Parse(Console.ReadLine());
+
+                                   // Utilizăm TryParse pentru a valida data
+                                   while (true)
+                                   {
+                                       string input = Console.ReadLine();
+                                       if (DateTime.TryParse(input, out data_expirare))
+                                       {
+                                           break;  // Ieșim din bucla când data este validă
+                                       }
+                                       else
+                                       {
+                                           Console.WriteLine("Data introdusă nu este validă. Vă rugăm să introduceți o dată corectă (ex: 31/12/2024).");
+                                       }
+                                   }
+
                                    Console.WriteLine("Introduceti conditiile de pastrare ale produsului:");
-                                   conditii_pastrare=Console.ReadLine();
-                                   ProdusGeneric produs_perisabil = new ProdusPerisabil(nume, pret, stoc,data_expirare,conditii_pastrare);
+                                   conditii_pastrare = Console.ReadLine();
+                                   ProdusGeneric produs_perisabil = new ProdusPerisabil(nume, pret, stoc, data_expirare, conditii_pastrare);
                                    comenziAdministrator.Adaugare_produs(produs_perisabil);
                                    comenziUtilizator.AfisareProduse();
                                    break;
+
                                case 3:
                                    string clasa_eficienta;
                                    int putere_maxima;

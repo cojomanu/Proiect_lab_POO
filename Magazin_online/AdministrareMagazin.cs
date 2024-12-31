@@ -8,10 +8,34 @@ public class AdministrareMagazin:Administrator
     {
         _magazin = magazin;
     }
+    // // public void Adaugare_produs(ProdusGeneric produs)
+    // {
+    //     _magazin.Produse.Add(produs);
+    // // }
     public void Adaugare_produs(ProdusGeneric produs)
     {
-        _magazin.Produse.Add(produs);
+        try
+        {
+            // Validarea prețului
+            Validare.ValidarePret(produs.Pret);
+            
+            Console.WriteLine(Validare.ValidarePret(produs.Pret));
+        
+            // Validarea stocului
+            Validare.ValidareStoc(produs.Stoc);
+
+            _magazin.Produse.Add(produs);
+            
+            Console.WriteLine("Produsul a fost adăugat cu succes.");
+        }
+        catch (ArgumentException ex)
+        {
+            // Gestionarea erorilor și afișarea mesajului corespunzător
+            ErrorHandler.HandleException(ex);
+        }
     }
+
+    
 
     public void Adaugare_comanda_in_lista_comenzi(Comanda comanda)
     {
