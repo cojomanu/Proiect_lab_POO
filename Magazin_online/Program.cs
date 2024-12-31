@@ -3,9 +3,9 @@
 using Magazin_online;
 using Magazin_online;
 Console.WriteLine("Produse");
-ProdusGeneric paine = new ProdusPerisabil("paine",5,1,new DateTime(2024, 12, 31),"uscat si racoros");
-ProdusGeneric apa = new ProdusPerisabil("apa",1,1,new DateTime(2024, 10, 31),"uscat si racoros");
-ProdusGeneric suc = new ProdusPerisabil("suc",3,1,new DateTime(2024, 10, 31),"uscat si racoros");
+ProdusPerisabil apa = new ProdusPerisabil("apa",1,1,new DateTime(2023, 10, 31),"uscat si racoros");
+ProdusPerisabil paine = new ProdusPerisabil("paine",5,1,new DateTime(2024, 12, 31),"uscat si racoros");
+ProdusPerisabil suc = new ProdusPerisabil("suc",3,1,new DateTime(2025, 10, 31),"uscat si racoros");
 
 Magazin magazin1 = new Magazin("magazin1");
 
@@ -15,9 +15,9 @@ bool exit = false;
 ComenziUtilizator comenziUtilizator = new ComenziUtilizator(magazin1);
 AdministrareMagazin comenziAdministrator = new AdministrareMagazin(magazin1);
 
-comenziAdministrator.Adaugare_produs(paine);
-comenziAdministrator.Adaugare_produs(apa);
-comenziAdministrator.Adaugare_produs(suc);
+comenziAdministrator.Adaugare_produs_perisabil(paine);
+comenziAdministrator.Adaugare_produs_perisabil(apa);
+comenziAdministrator.Adaugare_produs_perisabil(suc);
 comenziUtilizator.AfisareProduse();
 comenziUtilizator.OrdonareProduseDupaPretCrescator();
 comenziUtilizator.AfisareProduse();
@@ -177,7 +177,7 @@ while (!exit)
                             {
                                case 1:
                                    ProdusGeneric produs_generic = new ProdusGeneric(nume, pret, stoc);
-                                   comenziAdministrator.Adaugare_produs(produs_generic);
+                                   comenziAdministrator.Adaugare_produs_generic(produs_generic);
                                    comenziUtilizator.AfisareProduse();
                                    break;
                                // case 2:
@@ -212,8 +212,8 @@ while (!exit)
 
                                    Console.WriteLine("Introduceti conditiile de pastrare ale produsului:");
                                    conditii_pastrare = Console.ReadLine();
-                                   ProdusGeneric produs_perisabil = new ProdusPerisabil(nume, pret, stoc, data_expirare, conditii_pastrare);
-                                   comenziAdministrator.Adaugare_produs(produs_perisabil);
+                                   ProdusPerisabil produs_perisabil = new ProdusPerisabil(nume, pret, stoc, data_expirare, conditii_pastrare);
+                                   comenziAdministrator.Adaugare_produs_perisabil(produs_perisabil);
                                    comenziUtilizator.AfisareProduse();
                                    break;
 
@@ -224,8 +224,8 @@ while (!exit)
                                    clasa_eficienta=Console.ReadLine();
                                    Console.WriteLine("Introduceti conditiile de pastrare ale produsului:");
                                    putere_maxima=int.Parse(Console.ReadLine());
-                                   ProdusGeneric produs_electrocasnic = new ProdusElectrocasnic(nume, pret, stoc,clasa_eficienta,putere_maxima);
-                                   comenziAdministrator.Adaugare_produs(produs_electrocasnic);
+                                   ProdusElectrocasnic produs_electrocasnic = new ProdusElectrocasnic(nume, pret, stoc,clasa_eficienta,putere_maxima);
+                                   comenziAdministrator.Adaugare_produs_electrocasnic(produs_electrocasnic);
                                    comenziUtilizator.AfisareProduse();
                                    break;
                                default:
