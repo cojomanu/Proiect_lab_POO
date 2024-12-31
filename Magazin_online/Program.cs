@@ -287,11 +287,24 @@ while (!exit)
 //validare
                                case 3:
                                    string clasa_eficienta;
-                                   int putere_maxima;
                                    Console.WriteLine("Introduceti clasa de eficienta a produsului:");
                                    clasa_eficienta=Console.ReadLine();
-                                   Console.WriteLine("Introduceti conditiile de pastrare ale produsului:");
-                                   putere_maxima=int.Parse(Console.ReadLine());
+                                   Console.WriteLine("Introduceti puterea maxima a produsului:");
+                                   int putere_maxima;
+                                   while (true)
+                                   {
+                                       Console.WriteLine("Introduceti un numar (nu caractere):");
+                                       string input = Console.ReadLine();
+    
+                                       if (int.TryParse(input, out putere_maxima))
+                                       {
+                                           break;
+                                       }
+                                       else
+                                       {
+                                           Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+                                       }
+                                   }
                                    ProdusElectrocasnic produs_electrocasnic = new ProdusElectrocasnic(nume, pret, stoc,clasa_eficienta,putere_maxima);
                                    comenziAdministrator.Adaugare_produs_electrocasnic(produs_electrocasnic);
                                    comenziUtilizator.AfisareProduse();
@@ -315,15 +328,43 @@ while (!exit)
                             int optiune_stoc=int.Parse(Console.ReadLine());
                             switch (optiune_stoc)
                             {
-                                case 1://validare
+                                case 1:
                                     Console.WriteLine("Cu cat doriti sa cresteti stocul?:");
-                                    int crestere_stoc=int.Parse(Console.ReadLine());
+                                    int crestere_stoc;
+                                    while (true)
+                                    {
+                                        Console.WriteLine("Introduceti un numar (nu caractere):");
+                                        string input = Console.ReadLine();
+    
+                                        if (int.TryParse(input, out crestere_stoc))
+                                        {
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+                                        }
+                                    }
                                     comenziAdministrator.Modificare_stoc_produs_pe_stoc(produs_pentru_modificat_stoc,crestere_stoc);
                                     comenziUtilizator.AfisareProduse();
                                     break;
                                 case 2:
                                     Console.WriteLine("Cu cat doriti sa scadeti stocul?:");
-                                    int scadere_stoc=int.Parse(Console.ReadLine());
+                                    int scadere_stoc;
+                                    while (true)
+                                    {
+                                        Console.WriteLine("Introduceti un numar (nu caractere):");
+                                        string input = Console.ReadLine();
+    
+                                        if (int.TryParse(input, out scadere_stoc))
+                                        {
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+                                        }
+                                    }
                                     comenziAdministrator.Modificare_stoc_produs_pe_stoc(produs_pentru_modificat_stoc,-scadere_stoc);
                                     comenziUtilizator.AfisareProduse();
                                     break;

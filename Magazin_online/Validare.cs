@@ -61,14 +61,14 @@ namespace Magazin_online;
             return true;
         }
 
-        public static bool ValidareExistaProdus(string numeProdus, HashSet<string> produseDisponibile)
-        {
-            if (string.IsNullOrEmpty(numeProdus))
-                throw new ArgumentException("Numele produsului nu poate fi gol.");
-            if (!produseDisponibile.Contains(numeProdus))
-                throw new ArgumentException($"Produsul '{numeProdus}' nu există în magazin.");
-            return true;
-        }
+        // public static bool ValidareExistaProdus(string numeProdus, HashSet<string> produseDisponibile)
+        // {
+        //     if (string.IsNullOrEmpty(numeProdus))
+        //         throw new ArgumentException("Numele produsului nu poate fi gol.");
+        //     if (!produseDisponibile.Contains(numeProdus))
+        //         throw new ArgumentException($"Produsul '{numeProdus}' nu există în magazin.");
+        //     return true;
+        // }
 
         public static bool ValidareCos(List<string> produseDinCos)
         {
@@ -84,7 +84,7 @@ namespace Magazin_online;
             return true;
         }
         
-        public static void ValidareClasaEficienta(string clasaEficienta)
+        public static void ValidareClasaEficienta(string clasaEficienta,int putere_maxima)
         {
             if (string.IsNullOrWhiteSpace(clasaEficienta))
                 throw new ArgumentException("Clasa de eficienta nu poate fi goala.");
@@ -99,6 +99,8 @@ namespace Magazin_online;
         {
             if (string.IsNullOrWhiteSpace(conditiiPastrare))
                 throw new ArgumentException("Conditiile de pastrare nu pot fi goale.");
+            if (!Regex.IsMatch(conditiiPastrare, @"^[a-z]+$"))
+                throw new ArgumentException("Clasa de eficienta trebuie sa contina doar litere mici.");
         }
         
         public static void ValidareCantitateStoc(int cantitate, int stocCurent)

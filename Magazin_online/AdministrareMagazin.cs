@@ -33,6 +33,7 @@ public class AdministrareMagazin:Administrator
             Validare.ValidarePret(produs.Pret);
             Validare.ValidareStoc(produs.Stoc);
             Validare.ValidareDataExpirare(produs.DataExpirare);
+            Validare.ValidareConditiiPastrare(produs.ConditiiDeDepozitare);
 
         
             _magazin.Produse.Add(produs);
@@ -51,7 +52,7 @@ public class AdministrareMagazin:Administrator
             Validare.ValidareNumeProdus(produs.Nume);
             Validare.ValidarePret(produs.Pret);
             Validare.ValidareStoc(produs.Stoc);
-            Validare.ValidareClasaEficienta(produs.ClasaDeEficientaEnergetica);
+            Validare.ValidareClasaEficienta(produs.ClasaDeEficientaEnergetica,produs.PutereMaximaConsumata);
 
             _magazin.Produse.Add(produs);
             Console.WriteLine("Produsul a fost adăugat cu succes.");
@@ -90,7 +91,7 @@ public class AdministrareMagazin:Administrator
         }
     }
     
-    public void Modificare_stoc_produs_pe_stoc(string nume_produs, int crestere)
+    public void Modificare_stoc_produs_pe_stoc(string nume_produs, int crestereSAUscadere)
     {
         try
         {
@@ -102,9 +103,9 @@ public class AdministrareMagazin:Administrator
                 return;
             }
 
-            Validare.ValidareCantitateStoc(produs_ales.Stoc, crestere);
+            Validare.ValidareCantitateStoc(produs_ales.Stoc, crestereSAUscadere);
 
-            produs_ales.Modificare_stoc(crestere);
+            produs_ales.Modificare_stoc(crestereSAUscadere);
             Console.WriteLine("Stoc modificat cu succes");
         }
         catch (ArgumentException ex)
