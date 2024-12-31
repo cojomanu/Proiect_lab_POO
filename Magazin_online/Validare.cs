@@ -60,6 +60,25 @@ namespace Magazin_online;
                 throw new ArgumentException($"Adresa de livrare trebuie să aibă cel puțin {Config.LungimeMinimaAdresa} caractere.");
             return true;
         }
+        
+        public static bool ValidareNumeClient(string nume)
+        {
+            if (string.IsNullOrEmpty(nume))
+                throw new ArgumentException("Numele clientului este obligatoriu.");
+            if (!System.Text.RegularExpressions.Regex.IsMatch(nume, @"^[a-zA-Z\s]+$"))
+                throw new ArgumentException("Numele clientului poate conține doar litere și spații.");
+            return true;
+        }
+
+        public static bool ValidareEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+                throw new ArgumentException("Adresa de e-mail este obligatorie.");
+            if (!System.Text.RegularExpressions.Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+                throw new ArgumentException("Adresa de e-mail nu este validă.");
+            return true;
+        }
+
 
         // public static bool ValidareExistaProdus(string numeProdus, HashSet<string> produseDisponibile)
         // {
@@ -77,8 +96,10 @@ namespace Magazin_online;
             return true;
         }
 
-        public static bool ValidareComanda(string adresaLivrare, List<string> produseDinCos)
+        public static bool ValidareComanda(string numeClient,string email,string adresaLivrare, List<string> produseDinCos)
         {
+            ValidareNumeClient(numeClient);
+            ValidareEmail(email);
             ValidareAdresaLivrare(adresaLivrare);
             ValidareCos(produseDinCos);
             return true;
@@ -92,6 +113,10 @@ namespace Magazin_online;
             // Verifica daca clasa contine doar litere mari
             if (!Regex.IsMatch(clasaEficienta, @"^[A-Z]+$"))
                 throw new ArgumentException("Clasa de eficienta trebuie sa contina doar litere mari.");
+            if (putere_maxima > Config.PutereMaximaAparatElectrocasnic)
+                throw new ArgumentException("Puterea maxima depasita ! ");
+
+                
         }
 
         // Validare conditii de pastrare pentru produsele perisabile

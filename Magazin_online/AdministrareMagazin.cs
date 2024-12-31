@@ -66,7 +66,19 @@ public class AdministrareMagazin:Administrator
    
     public void Adaugare_comanda_in_lista_comenzi(Comanda comanda)
     {
-        comenzi.Add(comanda);
+        try
+        {
+            // Validare.ValidareComanda(comanda.nume_persoana,comanda.email,comanda.adresa_livrare,cos);
+            comenzi.Add(comanda);
+
+        }
+        
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine($"Eroare: {ex.Message}");
+        }
+        
+        
     }
 
     public void Stergere_produs_pe_stoc(string nume_produs)
