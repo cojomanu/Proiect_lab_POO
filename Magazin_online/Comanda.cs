@@ -32,7 +32,6 @@ public class Comanda
         {
             status = "In asteptare";
         }
-        Console.WriteLine("Comanda a fost plasata cu succes");
     }
 
     public void setStatus(String status)
