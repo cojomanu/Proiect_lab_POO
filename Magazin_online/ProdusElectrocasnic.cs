@@ -11,5 +11,5 @@ public class ProdusElectrocasnic: ProdusGeneric
         this.PutereMaximaConsumata = putereMaximaConsumata;
     }
     
-    public override string ToString() => $"Produsul electrocasnic : {Nume} - {Pret} lei - : clasa de efiecienta energetica{ClasaDeEficientaEnergetica}  - putere maxima consumata{PutereMaximaConsumata} W";
+    public override string ToString() => $"Produsul electrocasnic : {Nume} - {Pret} lei, {Stoc} bucati pe stoc  - : clasa de efiecienta energetica{ClasaDeEficientaEnergetica}  - putere maxima consumata{PutereMaximaConsumata} W";
 }
