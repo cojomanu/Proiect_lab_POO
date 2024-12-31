@@ -26,7 +26,21 @@ while (!exit)
 {
     Console.WriteLine("***Magazinu lu' Lucas***");
     Console.WriteLine("Alegeti Modul de operare: '1'-utilizator '2'-administrator!");
-        int mod=int.Parse(Console.ReadLine());
+        int mod;
+        while (true)
+        {
+            Console.WriteLine("Introduceti un numar (nu caractere):");
+            string input = Console.ReadLine();
+    
+            if (int.TryParse(input, out mod))
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+            }
+        }
         switch (mod)
         {
             case 1:
@@ -42,7 +56,21 @@ while (!exit)
                     Console.WriteLine("5.Adauga un produs in cos");
                     Console.WriteLine("6.Efectueaza o comanda");
                     Console.WriteLine("7.Revenire la meniu mod utilizare");
-                    int optiune_utilizator = int.Parse(Console.ReadLine());
+                    int optiune_utilizator;
+                    while (true)
+                    {
+                        Console.WriteLine("Introduceti un numar (nu caractere):");
+                        string input = Console.ReadLine();
+    
+                        if (int.TryParse(input, out optiune_utilizator))
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+                        }
+                    }
                     switch (optiune_utilizator)
                     {
                         case 1:
@@ -60,7 +88,21 @@ while (!exit)
                             break;
                         case 4:
                             Console.WriteLine("Cum sortati? 1-crescator 2-descrescator");
-                            int optiune_sortare=int.Parse(Console.ReadLine());
+                            int optiune_sortare;
+                            while (true)
+                            {
+                                Console.WriteLine("Introduceti un numar (nu caractere):");
+                                string input = Console.ReadLine();
+    
+                                if (int.TryParse(input, out optiune_sortare))
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+                                }
+                            }
                             switch (optiune_sortare)
                             {
                                 case 1:
@@ -105,7 +147,21 @@ while (!exit)
                             Console.WriteLine("Adresa livrare:"); 
                             adresa_livrare=Console.ReadLine();
                             Console.WriteLine("Doriti sa plasati comanda 1-da,2-no");
-                            int plasare=int.Parse(Console.ReadLine());
+                            int plasare;
+                            while (true)
+                            {
+                                Console.WriteLine("Introduceti un numar (nu caractere):");
+                                string input = Console.ReadLine();
+    
+                                if (int.TryParse(input, out plasare))
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+                                }
+                            }
                             switch (plasare)
                             {
                                 case 1:
@@ -158,7 +214,21 @@ while (!exit)
                     Console.WriteLine("4.Vizualizare comenzi plasate");
                     Console.WriteLine("5.Proceseaza o comanda");
                     Console.WriteLine("6.Revenire la meniu mod utilizare");
-                    int optiune_administrator = int.Parse(Console.ReadLine());
+                    int optiune_administrator;
+                    while (true)
+                    {
+                        Console.WriteLine("Introduceti un numar (nu caractere):");
+                        string input = Console.ReadLine();
+    
+                        if (int.TryParse(input, out optiune_administrator))
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+                        }
+                    }
                     switch (optiune_administrator)
                     {
                         case 1:
@@ -195,14 +265,12 @@ while (!exit)
                                    DateTime data_expirare;
                                    string conditii_pastrare;
                                    Console.WriteLine("Introduceti data de expirare a produsului:");
-
-                                   // Utilizăm TryParse pentru a valida data
                                    while (true)
                                    {
                                        string input = Console.ReadLine();
                                        if (DateTime.TryParse(input, out data_expirare))
                                        {
-                                           break;  // Ieșim din bucla când data este validă
+                                           break;  
                                        }
                                        else
                                        {
@@ -216,7 +284,7 @@ while (!exit)
                                    comenziAdministrator.Adaugare_produs_perisabil(produs_perisabil);
                                    comenziUtilizator.AfisareProduse();
                                    break;
-
+//validare
                                case 3:
                                    string clasa_eficienta;
                                    int putere_maxima;
@@ -247,7 +315,7 @@ while (!exit)
                             int optiune_stoc=int.Parse(Console.ReadLine());
                             switch (optiune_stoc)
                             {
-                                case 1:
+                                case 1://validare
                                     Console.WriteLine("Cu cat doriti sa cresteti stocul?:");
                                     int crestere_stoc=int.Parse(Console.ReadLine());
                                     comenziAdministrator.Modificare_stoc_produs_pe_stoc(produs_pentru_modificat_stoc,crestere_stoc);
