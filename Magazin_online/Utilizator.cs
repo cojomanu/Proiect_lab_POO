@@ -2,8 +2,9 @@
 
 public interface Utilizator
 {
-    public void AdaugaProdus(ProdusGeneric produs);
-    public void AfiseazaProduse();
+    public void AfisareProduse();
+    public void InspectareProdus(string produs);
     public void CautareProdusDupaNume(string nume);
-    public void OrdonareProduseDupaPret();
+    public void OrdonareProduseDupaPretCrescator();
+    public void OrdonareProduseDupaPretDescrescator();
 }

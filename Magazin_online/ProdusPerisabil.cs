@@ -12,5 +12,5 @@ public class ProdusPerisabil: ProdusGeneric
         this.ConditiiDeDepozitare = conditiiDeDepozitare;
     }
     
-    public override string ToString() => $"Produsul perisabil : {Nume} - {Pret} lei - data expirare: {DataExpirare} - conditii de depozitare: {ConditiiDeDepozitare}";
+    public override string ToString() => $"Produsul perisabil : {Nume} - {Pret} lei, {Stoc} bucati pe stoc  - data expirare: {DataExpirare} - conditii de depozitare: {ConditiiDeDepozitare}";
 }
