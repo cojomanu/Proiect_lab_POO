@@ -110,6 +110,8 @@ while (!exit)
                             {
                                 case 1:
                                     Comanda comanda_utilizator=new Comanda(cos,nume, numar_telefon, email, adresa_livrare);
+                                    comenziAdministrator.Adaugare_comanda_in_lista_comenzi(comanda_utilizator);
+                                    Console.WriteLine("Comanda a fost plasata cu succes");
                                     break;
                                 case 2:
                                     Console.WriteLine("Comanda nu a fost plasata");
@@ -252,8 +254,8 @@ while (!exit)
                                         iesire_procesare=true;
                                         break;
                                     case 1:
-                                        Console.WriteLine("Doriti sa modificati statusul comenzii in 'In curs de livrare'? true-Da, false-Nu");
-                                        bool modificare=bool.Parse(Console.ReadLine());
+                                        Console.WriteLine("Doriti sa modificati statusul comenzii in 'In curs de livrare'? 1-Da, 0-Nu");
+                                        int modificare=int.Parse(Console.ReadLine());
                                         comenziAdministrator.Procesare_comenzi_status(care_comanda,modificare);
                                         break;
                                     case 2:
@@ -279,10 +281,4 @@ while (!exit)
                 break;
         }
     }
-
-
-
-
-
-
-
+    
