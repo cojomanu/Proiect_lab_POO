@@ -13,6 +13,11 @@ public class AdministrareMagazin:Administrator
         _magazin.Produse.Add(produs);
     }
 
+    public void Adaugare_comanda_in_lista_comenzi(Comanda comanda)
+    {
+        comenzi.Add(comanda);
+    }
+
     public void Stergere_produs_pe_stoc(string nume_produs)
     {
         int select=-1;
@@ -58,9 +63,9 @@ public class AdministrareMagazin:Administrator
             Console.WriteLine(comanda);
     }
 
-    public void Procesare_comenzi_status(int care_comanda,bool ok)
+    public void Procesare_comenzi_status(int care_comanda,int ok)
     {
-        if (ok)
+        if (ok==1)
         {
             comenzi[care_comanda].setStatus("In curs de livrare");
         }
