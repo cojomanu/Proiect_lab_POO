@@ -162,19 +162,28 @@ while (!exit)
                                     Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
                                 }
                             }
-                            switch (plasare)
+
+                            try
                             {
-                                case 1:
-                                    Comanda comanda_utilizator=new Comanda(cos,nume, numar_telefon, email, adresa_livrare);
-                                    comenziAdministrator.Adaugare_comanda_in_lista_comenzi(comanda_utilizator);
-                                    Console.WriteLine("Comanda a fost plasata cu succes");
-                                    break;
-                                case 2:
-                                    Console.WriteLine("Comanda nu a fost plasata");
-                                    break;
-                                default:
-                                    Console.WriteLine("Optiune invalida");
-                                    break;
+                                Validare.ValidareCos(cos);
+                                switch (plasare)
+                                {
+                                    case 1:
+                                        Comanda comanda_utilizator=new Comanda(cos,nume, numar_telefon, email, adresa_livrare);
+                                        comenziAdministrator.Adaugare_comanda_in_lista_comenzi(comanda_utilizator);
+                                        Console.WriteLine("Comanda a fost plasata cu succes");
+                                        break;
+                                    case 2:
+                                        Console.WriteLine("Comanda nu a fost plasata");
+                                        break;
+                                    default:
+                                        Console.WriteLine("Optiune invalida");
+                                        break;
+                                }
+                            }
+                            catch (ArgumentException ex)
+                            {
+                                Console.WriteLine($"Eroare: {ex.Message}");
                             }
                             break;
                         case 7:

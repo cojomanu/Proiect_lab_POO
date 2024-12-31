@@ -68,7 +68,7 @@ public class AdministrareMagazin:Administrator
     {
         try
         {
-            // Validare.ValidareComanda(comanda.nume_persoana,comanda.email,comanda.adresa_livrare,cos);
+            Validare.ValidareComanda(comanda.nume_persoana,comanda.email,comanda.adresa_livrare);
             comenzi.Add(comanda);
 
         }

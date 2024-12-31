@@ -89,19 +89,18 @@ namespace Magazin_online;
         //     return true;
         // }
 
-        public static bool ValidareCos(List<string> produseDinCos)
+        public static bool ValidareCos(List<ProdusGeneric> produseDinCos)
         {
             if (produseDinCos == null || produseDinCos.Count == 0)
                 throw new ArgumentException("Coșul de cumpărături este gol. Adaugă produse înainte de a plasa comanda.");
             return true;
         }
 
-        public static bool ValidareComanda(string numeClient,string email,string adresaLivrare, List<string> produseDinCos)
+        public static bool ValidareComanda(string numeClient,string email,string adresaLivrare)
         {
             ValidareNumeClient(numeClient);
             ValidareEmail(email);
             ValidareAdresaLivrare(adresaLivrare);
-            ValidareCos(produseDinCos);
             return true;
         }
         
