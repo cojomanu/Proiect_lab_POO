@@ -122,14 +122,15 @@ namespace Magazin_online;
         public static void ValidareConditiiPastrare(string conditiiPastrare)
         {
             if (string.IsNullOrWhiteSpace(conditiiPastrare))
-                throw new ArgumentException("Conditiile de pastrare nu pot fi goale.");
+                throw new ArgumentException("Conditiile de depozitare nu pot fi goale.");
             if (!Regex.IsMatch(conditiiPastrare, @"^[a-z]+$"))
-                throw new ArgumentException("Clasa de eficienta trebuie sa contina doar litere mici.");
+                throw new ArgumentException("Conditiile de depozitare trebuie sa contina doar litere mici.");
         }
         
         public static void ValidareCantitateStoc(int cantitate, int stocCurent)
         {
             if (cantitate <= 0)
+                
                 throw new ArgumentException("Cantitatea trebuie să fie un număr pozitiv.");
 
             if (cantitate > stocCurent)
