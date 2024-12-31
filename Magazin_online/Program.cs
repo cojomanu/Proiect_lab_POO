@@ -3,8 +3,8 @@
 using Magazin_online;
 using Magazin_online;
 Console.WriteLine("Produse");
-ProdusPerisabil apa = new ProdusPerisabil("apa",1,1,new DateTime(2023, 10, 31),"uscat si racoros");
-ProdusPerisabil paine = new ProdusPerisabil("paine",5,1,new DateTime(2024, 12, 31),"uscat si racoros");
+ProdusPerisabil apa = new ProdusPerisabil("apa",1,1,new DateTime(2025, 10, 31),"uscat si racoros");
+ProdusPerisabil paine = new ProdusPerisabil("paine",5,1,new DateTime(2025, 12, 31),"uscat si racoros");
 ProdusPerisabil suc = new ProdusPerisabil("suc",3,1,new DateTime(2025, 10, 31),"uscat si racoros");
 
 Magazin magazin1 = new Magazin("magazin1");
@@ -229,6 +229,7 @@ while (!exit)
                                    comenziUtilizator.AfisareProduse();
                                    break;
                                default:
+                                   Console.WriteLine("Va rugam alegeti o alta optiune");
                                    break;
                             }
                             break;
@@ -268,25 +269,81 @@ while (!exit)
                             break;
                         case 5:
                             Console.WriteLine("Ce comanda doriti sa procesati? ");
-                            int care_comanda=int.Parse(Console.ReadLine());
+                            int care_comanda;
+                            while (true)
+                            {
+                                Console.WriteLine("Introduceti un numar (nu caractere):");
+                                string input = Console.ReadLine();
+    
+                                if (int.TryParse(input, out care_comanda))
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+                                }
+                            }
+
                             bool iesire_procesare = false;
                             while (!iesire_procesare)
                             {
                                 Console.WriteLine("Doriti sa 1-schimbati statusul, 2-schimbati data livrarii, 0-iesire meniu procesare:");
-                                int optiune_procesare=int.Parse(Console.ReadLine());
+                                int optiune_procesare;
+                                while (true)
+                                {
+                                    Console.WriteLine("Introduceti un numar (nu caractere):");
+                                    string input = Console.ReadLine();
+    
+                                    if (int.TryParse(input, out optiune_procesare))
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+                                    }
+                                }
+                                
                                 switch (optiune_procesare)
                                 {
                                     case 0:
                                         iesire_procesare=true;
                                         break;
                                     case 1:
+                                        int modificare;
+                                        while (true)
+                                        {
+                                            Console.WriteLine("Introduceti un numar (nu caractere):");
+                                            string input = Console.ReadLine();
+    
+                                            if (int.TryParse(input, out modificare))
+                                            {
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+                                            }
+                                        }
                                         Console.WriteLine("Doriti sa modificati statusul comenzii in 'In curs de livrare'? 1-Da, 0-Nu");
-                                        int modificare=int.Parse(Console.ReadLine());
                                         comenziAdministrator.Procesare_comenzi_status(care_comanda,modificare);
                                         break;
                                     case 2:
                                         Console.WriteLine("Introduceti noua data");
-                                        DateTime noua_data_livrare=DateTime.Parse(Console.ReadLine());
+                                        DateTime noua_data_livrare;
+                                        while (true)
+                                        {
+                                            string input = Console.ReadLine();
+                                            if (DateTime.TryParse(input, out noua_data_livrare))
+                                            {
+                                                break;  
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("Data introdusă nu este validă. Vă rugăm să introduceți o dată corectă (ex: 31/12/2024).");
+                                            }
+                                        }
                                         comenziAdministrator.Procesare_comenzi_data_livrare(care_comanda,noua_data_livrare);
                                         break;
                                     default:
