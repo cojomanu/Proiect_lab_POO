@@ -2,10 +2,16 @@
 
 using Magazin_online;
 using Magazin_online;
-Console.WriteLine("Produse");
+Console.ForegroundColor = ConsoleColor.DarkBlue;
+Console.WriteLine("Erorae cu rosu semnifica semnalarea acesteia , nu este aruncata exceptia care opreste opearatia curenta");
+Console.ResetColor();
+Console.WriteLine("Eroare cu alb semnifica ca eroarea scrisa cu rosu a fost aruncata si astfel operatia curenta gresita a fost oprita");
+Console.ForegroundColor = ConsoleColor.DarkYellow;
+Console.WriteLine("Magazin online");
+Console.ResetColor();
 ProdusPerisabil apa = new ProdusPerisabil("apa",1,1,new DateTime(2025, 10, 31),"uscat si racoros");
 ProdusPerisabil paine = new ProdusPerisabil("paine",5,1,new DateTime(2025, 12, 31),"uscat si racoros");
-ProdusPerisabil suc = new ProdusPerisabil("suc",3,1,new DateTime(2025, 10, 31),"uscat si racoros");
+ProdusPerisabil suc = new ProdusPerisabil("suc",3,1,new DateTime(2000, 10, 31),"uscat si racoros");
 
 Magazin magazin1 = new Magazin("magazin1");
 
