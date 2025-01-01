@@ -16,3 +16,5 @@ public interface Administrator
     
     public void Adaugare_comanda_in_lista_comenzi(Comanda comanda);
 }
+
+
