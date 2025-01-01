@@ -1,9 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using Magazin_online;
-using Magazin_online;
+
 Console.ForegroundColor = ConsoleColor.DarkBlue;
-Console.WriteLine("Erorae cu rosu semnifica semnalarea acesteia , nu este aruncata exceptia care opreste opearatia curenta");
+Console.WriteLine("Eroare cu rosu semnifica semnalarea acesteia , nu este aruncata exceptia care opreste opearatia curenta");
 Console.ResetColor();
 Console.WriteLine("Eroare cu alb semnifica ca eroarea scrisa cu rosu a fost aruncata si astfel operatia curenta gresita a fost oprita");
 Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -30,6 +30,7 @@ comenziUtilizator.AfisareProduse();
 
 while (!exit)
 {
+    Console.ForegroundColor = ConsoleColor.DarkMagenta;
     Console.WriteLine("***Magazinu lu' Lucas***");
     Console.WriteLine("Alegeti Modul de operare: '1'-utilizator '2'-administrator!");
         int mod;
@@ -47,12 +48,15 @@ while (!exit)
                 Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
             }
         }
+        Console.ResetColor();
+
         switch (mod)
         {
             case 1:
                 bool iesire_utilizator = false;
                 while (!iesire_utilizator)
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                     List<ProdusGeneric> cos=new List<ProdusGeneric>();
                     Console.WriteLine("*Optiuni de utilizator*");
                     Console.WriteLine("1.Vizualizeaza toate produsele magazinului");
@@ -62,6 +66,7 @@ while (!exit)
                     Console.WriteLine("5.Adauga un produs in cos");
                     Console.WriteLine("6.Efectueaza o comanda");
                     Console.WriteLine("7.Revenire la meniu mod utilizare");
+                    Console.ResetColor();
                     int optiune_utilizator;
                     while (true)
                     {
