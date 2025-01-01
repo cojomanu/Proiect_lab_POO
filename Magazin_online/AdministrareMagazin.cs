@@ -9,22 +9,21 @@ public class AdministrareMagazin:Administrator
         _magazin = magazin;
     }
     public void Adaugare_produs_generic(ProdusGeneric produs)
-   {
-           try
-           {
-               Validare.ValidareNumeProdus(produs.Nume);
-               Validare.ValidarePret(produs.Pret);
-               Validare.ValidareStoc(produs.Stoc);
-   
-               _magazin.Produse.Add(produs);
-               Console.WriteLine("Produsul a fost adăugat cu succes.");
-           }
-           catch (ArgumentException ex)
-           {
-               // Console.WriteLine($"Eroare: {ex.Message}");
-               ErrorHandler.HandleException(ex);
-           }
-       } 
+    {
+        try
+        {
+            Validare.ValidareNumeProdus(produs.Nume);
+            Validare.ValidarePret(produs.Pret);
+            Validare.ValidareStoc(produs.Stoc);
+
+            _magazin.Produse.Add(produs);
+            Console.WriteLine("Produsul a fost adăugat cu succes.");
+        }
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine($"Eroare: {ex.Message}");
+        }
+    }
     
     public void Adaugare_produs_perisabil(ProdusPerisabil produs)
     {
