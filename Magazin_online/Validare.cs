@@ -4,16 +4,6 @@ namespace Magazin_online;
 
     public static class Validare
     {
-        // public static bool ValidarePret(decimal pret)
-        // {
-        //     if (pret <= 0)
-        //         throw new ArgumentException("Prețul produsului trebuie să fie un număr pozitiv.");
-        //     if (pret > Config.PretMaxim)
-        //         throw new ArgumentException($"Prețul produsului nu poate depăși {Config.PretMaxim:N}.");
-        //     return true;
-        // }
-        
-        // Validare nume produs (doar litere mici si fara caractere speciale)
         public static void ValidareNumeProdus(string nume)
         {
             if (string.IsNullOrWhiteSpace(nume))
@@ -78,17 +68,6 @@ namespace Magazin_online;
                 throw new ArgumentException("Adresa de e-mail nu este validă.");
             return true;
         }
-
-
-        // public static bool ValidareExistaProdus(string numeProdus, HashSet<string> produseDisponibile)
-        // {
-        //     if (string.IsNullOrEmpty(numeProdus))
-        //         throw new ArgumentException("Numele produsului nu poate fi gol.");
-        //     if (!produseDisponibile.Contains(numeProdus))
-        //         throw new ArgumentException($"Produsul '{numeProdus}' nu există în magazin.");
-        //     return true;
-        // }
-
         public static bool ValidareCos(List<ProdusGeneric> produseDinCos)
         {
             if (produseDinCos == null || produseDinCos.Count == 0)
