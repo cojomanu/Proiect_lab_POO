@@ -48,5 +48,7 @@ public class Comanda
     {
         return $"Comanda {numar_comanda} contine {Cos_produse} pentru {nume_persoana}, {numar_telefon}, {email}, {adresa_livrare}, {email}, adresa: {adresa_livrare}, status: {status}, data_livrare: {data_livrare} ";
     }
-    
+
+   
+
 }
