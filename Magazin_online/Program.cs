@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using Magazin_online;
-
+List<ProdusGeneric> cos=new List<ProdusGeneric>();
 Console.ForegroundColor = ConsoleColor.DarkBlue;
 Console.WriteLine("Eroare cu rosu semnifica semnalarea acesteia , nu este aruncata exceptia care opreste opearatia curenta");
 Console.ResetColor();
@@ -9,7 +9,7 @@ Console.WriteLine("Eroare cu alb semnifica ca eroarea scrisa cu rosu a fost arun
 Console.ForegroundColor = ConsoleColor.DarkYellow;
 Console.WriteLine("Magazin online");
 Console.ResetColor();
-ProdusPerisabil apa = new ProdusPerisabil("apa",1,1,new DateTime(2025, 10, 31),"uscat si racoros");
+ProdusPerisabil apa = new ProdusPerisabil("apa",1,1,new DateTime(2025, 01, 6),"uscat");
 ProdusPerisabil paine = new ProdusPerisabil("paine",5,1,new DateTime(2025, 12, 31),"uscat si racoros");
 ProdusPerisabil suc = new ProdusPerisabil("suc",3,1,new DateTime(2000, 10, 31),"uscat si racoros");
 
@@ -57,7 +57,6 @@ while (!exit)
                 while (!iesire_utilizator)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    List<ProdusGeneric> cos=new List<ProdusGeneric>();
                     Console.WriteLine("*Optiuni de utilizator*");
                     Console.WriteLine("1.Vizualizeaza toate produsele magazinului");
                     Console.WriteLine("2.Inspecteaza un anumit produs");
@@ -196,6 +195,7 @@ while (!exit)
                             {
                                 Console.WriteLine($"Eroare: {ex.Message}");
                             }
+                            
                             break;
                         case 7:
                             iesire_utilizator = true;
@@ -258,11 +258,53 @@ while (!exit)
                             Console.WriteLine("Introdu numele produsului:");
                             nume=Console.ReadLine();
                             Console.WriteLine("Introdu Pretul produsului:");
-                            pret=decimal.Parse(Console.ReadLine());
+                            // pret=decimal.Parse(Console.ReadLine());
+                            while (true)
+                            {
+                                Console.WriteLine("Introduceti un numar (nu caractere):");
+                                string input = Console.ReadLine();
+    
+                                if (decimal.TryParse(input, out pret))
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+                                }
+                            }
                             Console.WriteLine("Introdu stocul produsului:");
-                            stoc=int.Parse(Console.ReadLine());
+                            // stoc=int.Parse(Console.ReadLine());
+                            while (true)
+                            {
+                                Console.WriteLine("Introduceti un numar (nu caractere):");
+                                string input = Console.ReadLine();
+    
+                                if (int.TryParse(input, out stoc))
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+                                }
+                            }
                             Console.WriteLine("Produs generic-1,produs perisabil-2,produs electrocasnic-3:");
-                            int optiune_produs=int.Parse(Console.ReadLine());
+                            int optiune_produs;
+                            while (true)
+                            {
+                                Console.WriteLine("Introduceti un numar (nu caractere):");
+                                string input = Console.ReadLine();
+    
+                                if (int.TryParse(input, out optiune_produs))
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+                                }
+                            }
                             switch (optiune_produs)
                             {
                                case 1:

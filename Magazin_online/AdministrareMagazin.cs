@@ -37,6 +37,7 @@ public class AdministrareMagazin:Administrator
 
         
             _magazin.Produse.Add(produs);
+            
             Console.WriteLine("Produsul a fost adăugat cu succes.");
         }
         catch (ArgumentException ex)
