@@ -4,3 +4,15 @@ Numar telefon: 1213141414
 Email: ceva@gmail.com
 Adresa de livrare: fkjhfkhkjfhakjf
 Status comanda: In asteptare
+Comanda plasata pe: 1/6/2025 10:37:44 PM
+Nume: emanuel
+Numar telefon: 07777777777
+Email: ceva@gmail.com
+Adresa de livrare: abcdefghjau
+Status comanda: In asteptare
+Comanda plasata pe: 1/6/2025 10:46:30 PM
+Nume: a
+Numar telefon: 13131313
+Email: ceva@gmail.com
+Adresa de livrare: fafhfkhfkahf
+Status comanda: In asteptare

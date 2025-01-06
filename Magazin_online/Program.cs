@@ -47,6 +47,7 @@ bool exit = false;
 
 ComenziUtilizator comenziUtilizator = new ComenziUtilizator(magazin1);
 AdministrareMagazin comenziAdministrator = new AdministrareMagazin(magazin1);
+
 string path = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\produse.txt"; // Calea fișierului
 AdministrareMagazin.CreazaProdusDinFisier(path,comenziAdministrator);
 comenziAdministrator.Adaugare_produs_perisabil(paine);
@@ -528,7 +529,7 @@ while (!exit)
                             {
                                 Console.WriteLine("Introduceti un numar (nu caractere):");
                                 string input = Console.ReadLine();
-    
+                            
                                 if (int.TryParse(input, out care_comanda))
                                 {
                                     break;
@@ -538,7 +539,7 @@ while (!exit)
                                     Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
                                 }
                             }
-
+                            
                             bool iesire_procesare = false;
                             while (!iesire_procesare)
                             {
@@ -548,7 +549,7 @@ while (!exit)
                                 {
                                     Console.WriteLine("Introduceti un numar (nu caractere):");
                                     string input = Console.ReadLine();
-    
+                            
                                     if (int.TryParse(input, out optiune_procesare))
                                     {
                                         break;
@@ -570,7 +571,7 @@ while (!exit)
                                         {
                                             Console.WriteLine("Introduceti un numar (nu caractere):");
                                             string input = Console.ReadLine();
-    
+                            
                                             if (int.TryParse(input, out modificare))
                                             {
                                                 break;
