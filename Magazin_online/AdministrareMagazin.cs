@@ -2,12 +2,64 @@
 
 public class AdministrareMagazin:Administrator
 {
+    
     private Magazin _magazin;
     private List<Comanda> comenzi=new List<Comanda>();
     public AdministrareMagazin(Magazin magazin)
     {
         _magazin = magazin;
     }
+
+    public static ProdusGeneric CreazaProdusDinFisier(string path)
+        {
+            try
+            {
+                // Citirea datelor din fișier
+                string[] lines = File.ReadAllLines(path);
+
+                // Presupunem că fișierul conține un produs pe linie
+                foreach (var line in lines)
+                {
+                    var parts = line.Split(',');
+
+                    if (parts.Length >= 3)
+                    {
+                        string nume = parts[0].Trim();
+                        decimal pret = decimal.Parse(parts[1].Trim());
+                        int stoc = int.Parse(parts[2].Trim());
+
+                        // Verificăm tipul produsului (pentru a crea un obiect de tipul corect)
+                        if (parts.Length == 3) // ProdusGeneric
+                        {
+                            return new ProdusGeneric(nume, pret, stoc);
+                        }
+                        else if (parts.Length == 5) // ProdusElectrocasnic
+                        {
+                            string clasaEficienta = parts[3].Trim();
+                            int putereMaxima = int.Parse(parts[4].Trim());
+                            return new ProdusElectrocasnic(nume, pret, stoc, clasaEficienta, putereMaxima);
+                        }
+                        else if (parts.Length == 5) // ProdusPerisabil
+                        {
+                            DateTime dataExpirare = DateTime.Parse(parts[3].Trim());
+                            string conditiiDepozitare = parts[4].Trim();
+                            return new ProdusPerisabil(nume, pret, stoc, dataExpirare, conditiiDepozitare);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Formatul fișierului nu este valid.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Eroare la citirea fișierului: {ex.Message}");
+            }
+
+            return null;
+        }
+
     public void Adaugare_produs_generic(ProdusGeneric produs)
     {
         try

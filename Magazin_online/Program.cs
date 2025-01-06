@@ -1,6 +1,25 @@
 ﻿// See https://aka.ms/new-console-template for more information
-
+using System;
+using System.IO;
 using Magazin_online;
+// // Creează un magazin gol
+// Magazin magazin1 = new Magazin("Magazin1");
+//         
+// // Creează instanța pentru administrarea magazinului
+// AdministrareMagazin administrareMagazin = new AdministrareMagazin(magazin1);
+//         
+// // Calea către fișierul de intrare (modifică cu calea ta reală)
+// string caleFisier = "";
+//
+// // Apelează metoda pentru citirea produselor din fișier
+// administrareMagazin.CitireProduseDinFisier(caleFisier);
+//
+// // Afișează produsele pentru a verifica rezultatul
+// Console.WriteLine("Produsele citite din fișier:");
+// foreach (var produs in magazin1.Produse)
+// {
+//     Console.WriteLine(produs);
+// }
 List<ProdusGeneric> cos=new List<ProdusGeneric>();
 Console.ForegroundColor = ConsoleColor.DarkBlue;
 Console.WriteLine("Eroare cu rosu semnifica semnalarea acesteia , nu este aruncata exceptia care opreste opearatia curenta");
@@ -9,18 +28,28 @@ Console.WriteLine("Eroare cu alb semnifica ca eroarea scrisa cu rosu a fost arun
 Console.ForegroundColor = ConsoleColor.DarkYellow;
 Console.WriteLine("Magazin online");
 Console.ResetColor();
-ProdusPerisabil apa = new ProdusPerisabil("apa",1,1,new DateTime(2025, 01, 6),"uscat");
-ProdusPerisabil paine = new ProdusPerisabil("paine",5,1,new DateTime(2025, 12, 31),"uscat si racoros");
+ProdusPerisabil apa = new ProdusPerisabil("apa",1,1,new DateTime(2025, 01, 8),"uscat");
+ProdusPerisabil paine = new ProdusPerisabil("paine",5,1,new DateTime(2025, 12, 31),"racoros");
 ProdusPerisabil suc = new ProdusPerisabil("suc",3,1,new DateTime(2000, 10, 31),"uscat si racoros");
 
 Magazin magazin1 = new Magazin("magazin1");
+
+
+
+
+
+string path = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\produse.txt"; // Calea fișierului
+
+ProdusGeneric produs = AdministrareMagazin.CreazaProdusDinFisier(path);
+
+
 
 string parola = "parola";
 bool exit = false;
 
 ComenziUtilizator comenziUtilizator = new ComenziUtilizator(magazin1);
 AdministrareMagazin comenziAdministrator = new AdministrareMagazin(magazin1);
-
+comenziAdministrator.Adaugare_produs_generic(produs);
 comenziAdministrator.Adaugare_produs_perisabil(paine);
 comenziAdministrator.Adaugare_produs_perisabil(apa);
 comenziAdministrator.Adaugare_produs_perisabil(suc);
