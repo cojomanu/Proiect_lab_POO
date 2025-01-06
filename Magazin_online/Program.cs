@@ -38,9 +38,7 @@ Magazin magazin1 = new Magazin("magazin1");
 
 
 
-string path = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\produse.txt"; // Calea fișierului
 
-ProdusGeneric produs = AdministrareMagazin.CreazaProdusDinFisier(path);
 
 
 
@@ -49,7 +47,8 @@ bool exit = false;
 
 ComenziUtilizator comenziUtilizator = new ComenziUtilizator(magazin1);
 AdministrareMagazin comenziAdministrator = new AdministrareMagazin(magazin1);
-comenziAdministrator.Adaugare_produs_generic(produs);
+string path = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\produse.txt"; // Calea fișierului
+AdministrareMagazin.CreazaProdusDinFisier(path,comenziAdministrator);
 comenziAdministrator.Adaugare_produs_perisabil(paine);
 comenziAdministrator.Adaugare_produs_perisabil(apa);
 comenziAdministrator.Adaugare_produs_perisabil(suc);
@@ -176,22 +175,72 @@ while (!exit)
                                 Console.WriteLine("Produsul selectat nu exista");
                             break;
                         case 6:
+                            // string nume, numar_telefon, email, adresa_livrare;
+                            // Console.WriteLine("Nume:"); 
+                            // nume=Console.ReadLine();
+                            // Console.WriteLine("Numar_telefon:");
+                            // numar_telefon=Console.ReadLine();
+                            // Console.WriteLine("Email:"); 
+                            // email=Console.ReadLine();
+                            // Console.WriteLine("Adresa livrare:"); 
+                            // adresa_livrare=Console.ReadLine();
+                            // Console.WriteLine("Doriti sa plasati comanda 1-da,2-no");
+                            // int plasare;
+                            // while (true)
+                            // {
+                            //     Console.WriteLine("Introduceti un numar (nu caractere):");
+                            //     string input = Console.ReadLine();
+                            //
+                            //     if (int.TryParse(input, out plasare))
+                            //     {
+                            //         break;
+                            //     }
+                            //     else
+                            //     {
+                            //         Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+                            //     }
+                            // }
+                            //
+                            // try
+                            // {
+                            //     Validare.ValidareCos(cos);
+                            //     switch (plasare)
+                            //     {
+                            //         case 1:
+                            //             Comanda comanda_utilizator=new Comanda(cos,nume, numar_telefon, email, adresa_livrare);
+                            //             comenziAdministrator.Adaugare_comanda_in_lista_comenzi(comanda_utilizator);
+                            //             Console.WriteLine("Comanda a fost plasata cu succes");
+                            //             break;
+                            //         case 2:
+                            //             Console.WriteLine("Comanda nu a fost plasata");
+                            //             break;
+                            //         default:
+                            //             Console.WriteLine("Optiune invalida");
+                            //             break;
+                            //     }
+                            // }
+                            // catch (ArgumentException ex)
+                            // {
+                            //     Console.WriteLine($"Eroare: {ex.Message}");
+                            // }
+                            //
+                            // Codul pentru plasarea comenzii
                             string nume, numar_telefon, email, adresa_livrare;
                             Console.WriteLine("Nume:"); 
-                            nume=Console.ReadLine();
-                            Console.WriteLine("Numar_telefon:");
-                            numar_telefon=Console.ReadLine();
+                            nume = Console.ReadLine();
+                            Console.WriteLine("Numar telefon:");
+                            numar_telefon = Console.ReadLine();
                             Console.WriteLine("Email:"); 
-                            email=Console.ReadLine();
+                            email = Console.ReadLine();
                             Console.WriteLine("Adresa livrare:"); 
-                            adresa_livrare=Console.ReadLine();
-                            Console.WriteLine("Doriti sa plasati comanda 1-da,2-no");
+                            adresa_livrare = Console.ReadLine();
+                            Console.WriteLine("Doriti sa plasati comanda 1-da, 2-no");
                             int plasare;
                             while (true)
                             {
                                 Console.WriteLine("Introduceti un numar (nu caractere):");
                                 string input = Console.ReadLine();
-    
+
                                 if (int.TryParse(input, out plasare))
                                 {
                                     break;
@@ -208,8 +257,13 @@ while (!exit)
                                 switch (plasare)
                                 {
                                     case 1:
-                                        Comanda comanda_utilizator=new Comanda(cos,nume, numar_telefon, email, adresa_livrare);
-                                        comenziAdministrator.Adaugare_comanda_in_lista_comenzi(comanda_utilizator);
+                                        // Creăm o comandă cu produsele din coș și informațiile utilizatorului
+                                        Comanda comandaUtilizator = new Comanda(cos, nume, numar_telefon, email, adresa_livrare);
+
+                                        // Adăugăm comanda în lista de comenzi
+                                        comenziAdministrator.Adaugare_comanda_in_lista_comenzi(comandaUtilizator);
+
+                                        // Afișăm un mesaj de succes
                                         Console.WriteLine("Comanda a fost plasata cu succes");
                                         break;
                                     case 2:
@@ -224,7 +278,7 @@ while (!exit)
                             {
                                 Console.WriteLine($"Eroare: {ex.Message}");
                             }
-                            
+
                             break;
                         case 7:
                             iesire_utilizator = true;

@@ -10,55 +10,66 @@ public class AdministrareMagazin:Administrator
         _magazin = magazin;
     }
 
-    public static ProdusGeneric CreazaProdusDinFisier(string path)
+    public static void CreazaProdusDinFisier(string path, AdministrareMagazin comenziAdministrator)
+{
+    bool formatInvalid = false; // Indicator pentru erori de format
+
+    try
+    {
+        // Citirea datelor din fișier
+        string[] lines = File.ReadAllLines(path);
+
+        foreach (var line in lines)
         {
-            try
+            var parts = line.Split(',');
+
+            // Verificăm dacă linia are suficiente informații pentru a crea un produs
+            if (parts.Length >= 3)
             {
-                // Citirea datelor din fișier
-                string[] lines = File.ReadAllLines(path);
+                string nume = parts[0].Trim();
+                decimal pret = decimal.Parse(parts[1].Trim());
+                int stoc = int.Parse(parts[2].Trim());
 
-                // Presupunem că fișierul conține un produs pe linie
-                foreach (var line in lines)
+                // Verificăm tipul produsului pe baza câmpurilor
+                if (parts.Length == 3) // ProdusGeneric
                 {
-                    var parts = line.Split(',');
-
-                    if (parts.Length >= 3)
-                    {
-                        string nume = parts[0].Trim();
-                        decimal pret = decimal.Parse(parts[1].Trim());
-                        int stoc = int.Parse(parts[2].Trim());
-
-                        // Verificăm tipul produsului (pentru a crea un obiect de tipul corect)
-                        if (parts.Length == 3) // ProdusGeneric
-                        {
-                            return new ProdusGeneric(nume, pret, stoc);
-                        }
-                        else if (parts.Length == 5) // ProdusElectrocasnic
-                        {
-                            string clasaEficienta = parts[3].Trim();
-                            int putereMaxima = int.Parse(parts[4].Trim());
-                            return new ProdusElectrocasnic(nume, pret, stoc, clasaEficienta, putereMaxima);
-                        }
-                        else if (parts.Length == 5) // ProdusPerisabil
-                        {
-                            DateTime dataExpirare = DateTime.Parse(parts[3].Trim());
-                            string conditiiDepozitare = parts[4].Trim();
-                            return new ProdusPerisabil(nume, pret, stoc, dataExpirare, conditiiDepozitare);
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Formatul fișierului nu este valid.");
-                    }
+                    ProdusGeneric produs = new ProdusGeneric(nume, pret, stoc);
+                    comenziAdministrator.Adaugare_produs_generic(produs); // Adăugare produs generic
+                }
+                else if (parts.Length == 5) // ProdusElectrocasnic
+                {
+                    string clasaEficienta = parts[3].Trim();
+                    int putereMaxima = int.Parse(parts[4].Trim());
+                    ProdusElectrocasnic produs = new ProdusElectrocasnic(nume, pret, stoc, clasaEficienta, putereMaxima);
+                    comenziAdministrator.Adaugare_produs_electrocasnic(produs); // Adăugare produs electrocasnic
+                }
+                else if (parts.Length == 5) // ProdusPerisabil
+                {
+                    DateTime dataExpirare = DateTime.Parse(parts[3].Trim());
+                    string conditiiDepozitare = parts[4].Trim();
+                    ProdusPerisabil produs = new ProdusPerisabil(nume, pret, stoc, dataExpirare, conditiiDepozitare);
+                    comenziAdministrator.Adaugare_produs_perisabil(produs); // Adăugare produs perisabil
                 }
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine($"Eroare la citirea fișierului: {ex.Message}");
+                // Dacă linia are format incorect, marcăm că există o eroare de format
+                formatInvalid = true;
             }
-
-            return null;
         }
+
+        // Dacă a existat o eroare de format, afișăm un mesaj la sfârșit
+        if (formatInvalid)
+        {
+            Console.WriteLine("Unele linii din fișier au un format incorect și nu au fost procesate.");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Eroare la citirea fișierului: {ex.Message}");
+    }
+}
+
 
     public void Adaugare_produs_generic(ProdusGeneric produs)
     {
@@ -116,22 +127,77 @@ public class AdministrareMagazin:Administrator
         }
     }
 
-   
+    //
+    // public void Adaugare_comanda_in_lista_comenzi(Comanda comanda)
+    // {
+    //     try
+    //     {
+    //         Validare.ValidareComanda(comanda.nume_persoana,comanda.email,comanda.adresa_livrare);
+    //         comenzi.Add(comanda);
+    //
+    //     }
+    //     
+    //     catch (ArgumentException ex)
+    //     {
+    //         Console.WriteLine($"Eroare: {ex.Message}");
+    //     }
+    //     
+    //     
+    // }
+    public void SalveazaComandaInFisier(string path)
+    {
+        try
+        {
+            // Deschidem fișierul pentru a adăuga informațiile comenzii
+            using (StreamWriter sw = new StreamWriter(path, true)) // true pentru a adăuga la fișier
+            {
+                foreach (var comanda in comenzi)
+                {
+                    // Salvăm detaliile comenzii
+                    sw.WriteLine($"Comanda plasata pe: {DateTime.Now}");
+                    sw.WriteLine($"Nume: {comanda.nume_persoana}");
+                    sw.WriteLine($"Numar telefon: {comanda.numar_telefon}");
+                    sw.WriteLine($"Email: {comanda.email}");
+                    sw.WriteLine($"Adresa de livrare: {comanda.adresa_livrare}");
+                    sw.WriteLine($"Status comanda: {comanda.status}");
+
+                    // // Salvăm produsele din coș
+                    // foreach (var produs in comanda.produse)
+                    // {
+                    //     sw.WriteLine($"Produs: {produs.Nume}, Pret: {produs.Pret} lei, Stoc: {produs.Stoc}");
+                    // }
+                    //
+                    // sw.WriteLine(new string('-', 40)); // Linie de separare pentru claritate
+                }
+
+                Console.WriteLine("Comenzile au fost salvate cu succes.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Eroare la salvarea comenzilor: {ex.Message}");
+        }
+    }
+
     public void Adaugare_comanda_in_lista_comenzi(Comanda comanda)
     {
         try
         {
-            Validare.ValidareComanda(comanda.nume_persoana,comanda.email,comanda.adresa_livrare);
+            // Validăm comanda
+            Validare.ValidareComanda(comanda.nume_persoana, comanda.email, comanda.adresa_livrare);
+            // Adăugăm comanda în lista de comenzi
             comenzi.Add(comanda);
 
+            // Salvăm comenzile într-un fișier
+            string path = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\comenzi.txt"; // Calea către fișierul de comenzi
+            SalveazaComandaInFisier(path);
+
+            Console.WriteLine("Comanda a fost adăugată cu succes.");
         }
-        
         catch (ArgumentException ex)
         {
             Console.WriteLine($"Eroare: {ex.Message}");
         }
-        
-        
     }
 
     public void Stergere_produs_pe_stoc(string nume_produs)
