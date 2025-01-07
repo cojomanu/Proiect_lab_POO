@@ -470,13 +470,14 @@ while (!exit)
                                         iesire_procesare=true;
                                         break;
                                     case 1:
-                                        int modificare;
+                                        int ok_modificare;
                                         while (true)
                                         {
+                                            Console.WriteLine("Schimbati statusul in 'in curs de livrare'? 1-da");
                                             Console.WriteLine("Introduceti un numar (nu caractere):");
                                             string input = Console.ReadLine();
                             
-                                            if (int.TryParse(input, out modificare))
+                                            if (int.TryParse(input, out ok_modificare))
                                             {
                                                 break;
                                             }
@@ -485,8 +486,7 @@ while (!exit)
                                                 Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
                                             }
                                         }
-                                        Console.WriteLine("Doriti sa modificati statusul comenzii in 'In curs de livrare'? 1-Da, 0-Nu");
-                                        comenziAdministrator.Procesare_comenzi_status(care_comanda,modificare);
+                                        comenziAdministrator.Procesare_comenzi_status(care_comanda,ok_modificare);
                                         break;
                                     case 2:
                                         Console.WriteLine("Introduceti noua data");

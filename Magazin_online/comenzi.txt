@@ -1,11 +1,11 @@
-Comanda plasata pe: 1/6/2025 10:30:09 PM
+Comanda plasata pe: 01.06.2025 22:30:09
 Nume: a
 Numar telefon: 1213141414
 Email: ceva@gmail.com
 Adresa de livrare: fkjhfkhkjfhakjf
-Status comanda: In asteptare
+Status comanda: In curs de livrare
 
-Comanda plasata pe: 1/6/2025 10:37:44 PM
+Comanda plasata pe: 01.06.2025 22:37:44
 Nume: emanuel
 Numar telefon: 07777777777
 Email: ceva@gmail.com
@@ -17,4 +17,5 @@ Nume: Lucas
 Numar telefon: 090284092834
 Email: lucas@manu.com
 Adresa de livrare: jebelprincipala
-Status comanda: In asteptare
+Status comanda: In curs de livrare
+

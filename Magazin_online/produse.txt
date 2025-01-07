@@ -1,5 +1,5 @@
 telefon, 1200.50, 10
-apa, 1, 1, 2025-01-08, uscat
+apa, 1, 6
 benzina, 1, 11
 goron, 2, 1, 2025-01-08, shaormerie
 telefon, 120050, 10
