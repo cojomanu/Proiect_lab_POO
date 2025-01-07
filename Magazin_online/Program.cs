@@ -506,6 +506,92 @@ while (!exit)
                         case 4:
                             comenziAdministrator.Vizualizare_comenzi_plasate();
                             break;
+                        // case 5:
+                        //     Console.WriteLine("Ce comanda doriti sa procesati? ");
+                        //     int care_comanda;
+                        //     while (true)
+                        //     {
+                        //         Console.WriteLine("Introduceti un numar (nu caractere):");
+                        //         string input = Console.ReadLine();
+                        //     
+                        //         if (int.TryParse(input, out care_comanda))
+                        //         {
+                        //             break;
+                        //         }
+                        //         else
+                        //         {
+                        //             Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+                        //         }
+                        //     }
+                        //     
+                        //     bool iesire_procesare = false;
+                        //     while (!iesire_procesare)
+                        //     {
+                        //         Console.WriteLine("Doriti sa 1-schimbati statusul, 2-schimbati data livrarii, 0-iesire meniu procesare:");
+                        //         int optiune_procesare;
+                        //         while (true)
+                        //         {
+                        //             Console.WriteLine("Introduceti un numar (nu caractere):");
+                        //             string input = Console.ReadLine();
+                        //     
+                        //             if (int.TryParse(input, out optiune_procesare))
+                        //             {
+                        //                 break;
+                        //             }
+                        //             else
+                        //             {
+                        //                 Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+                        //             }
+                        //         }
+                        //         
+                        //         switch (optiune_procesare)
+                        //         {
+                        //             case 0:
+                        //                 iesire_procesare=true;
+                        //                 break;
+                        //             case 1:
+                        //                 int modificare;
+                        //                 while (true)
+                        //                 {
+                        //                     Console.WriteLine("Introduceti un numar (nu caractere):");
+                        //                     string input = Console.ReadLine();
+                        //     
+                        //                     if (int.TryParse(input, out modificare))
+                        //                     {
+                        //                         break;
+                        //                     }
+                        //                     else
+                        //                     {
+                        //                         Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
+                        //                     }
+                        //                 }
+                        //                 Console.WriteLine("Doriti sa modificati statusul comenzii in 'In curs de livrare'? 1-Da, 0-Nu");
+                        //                 comenziAdministrator.Procesare_comenzi_status(care_comanda,modificare);
+                        //                 break;
+                        //             case 2:
+                        //                 Console.WriteLine("Introduceti noua data");
+                        //                 DateTime noua_data_livrare;
+                        //                 while (true)
+                        //                 {
+                        //                     string input = Console.ReadLine();
+                        //                     if (DateTime.TryParse(input, out noua_data_livrare))
+                        //                     {
+                        //                         break;  
+                        //                     }
+                        //                     else
+                        //                     {
+                        //                         Console.WriteLine("Data introdusă nu este validă. Vă rugăm să introduceți o dată corectă (ex: 31/12/2024).");
+                        //                     }
+                        //                 }
+                        //                 comenziAdministrator.Procesare_comenzi_data_livrare(care_comanda,noua_data_livrare);
+                        //                 break;
+                        //             default:
+                        //                 Console.WriteLine("Optiune invalida");
+                        //                 break;
+                        //         }
+                        //         
+                        //     }
+                        //     break;
                         case 5:
                             Console.WriteLine("Ce comanda doriti sa procesati? ");
                             int care_comanda;
@@ -550,13 +636,14 @@ while (!exit)
                                         iesire_procesare=true;
                                         break;
                                     case 1:
-                                        int modificare;
+                                        int ok_modificare;
                                         while (true)
                                         {
+                                            Console.WriteLine("Schimbati statusul in 'in curs de livrare'? 1-da");
                                             Console.WriteLine("Introduceti un numar (nu caractere):");
                                             string input = Console.ReadLine();
                             
-                                            if (int.TryParse(input, out modificare))
+                                            if (int.TryParse(input, out ok_modificare))
                                             {
                                                 break;
                                             }
@@ -565,26 +652,60 @@ while (!exit)
                                                 Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
                                             }
                                         }
-                                        Console.WriteLine("Doriti sa modificati statusul comenzii in 'In curs de livrare'? 1-Da, 0-Nu");
-                                        comenziAdministrator.Procesare_comenzi_status(care_comanda,modificare);
+                                        comenziAdministrator.Procesare_comenzi_status(care_comanda,ok_modificare);
                                         break;
                                     case 2:
-                                        Console.WriteLine("Introduceti noua data");
-                                        DateTime noua_data_livrare;
-                                        while (true)
+                                    //     Console.WriteLine("Introduceti noua data");
+                                    //     DateTime noua_data_livrare;
+                                    //     while (true)
+                                    //     {
+                                    //         string input = Console.ReadLine();
+                                    //         if (DateTime.TryParse(input, out noua_data_livrare))
+                                    //         {
+                                    //             break;  
+                                    //         }
+                                    //         else
+                                    //         {
+                                    //             Console.WriteLine("Data introdusă nu este validă. Vă rugăm să introduceți o dată corectă (ex: 31/12/2024).");
+                                    //         }
+                                    //     }
+                                    //     comenziAdministrator.Procesare_comenzi_data_livrare(care_comanda,noua_data_livrare);
+                                    //     break;
+                                    // default:
+                                    //     Console.WriteLine("Optiune invalida");
+                                    //     break;
+                                    // Console.WriteLine("Introduceți noua dată de livrare (format: dd/MM/yyyy):");
+                                    // DateTime noua_data_livrare;
+                                    // while (true)
+                                    // {
+                                    //     string input = Console.ReadLine();
+                                    //     if (DateTime.TryParseExact(input, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out noua_data_livrare))
+                                    //     {
+                                    //         break;
+                                    //     }
+                                    //     else
+                                    //     {
+                                    //         Console.WriteLine("Data introdusă nu este validă. Vă rugăm să introduceți o dată corectă în formatul dd/MM/yyyy.");
+                                    //     }
+                                    // }
+                                    // comenziAdministrator.Procesare_comenzi_data_livrare(care_comanda, noua_data_livrare);
+                                    Console.WriteLine("Introduceți noua dată de livrare (format: dd/MM/yyyy):");
+                                    DateTime noua_data_livrare;
+                                    while (true)
+                                    {
+                                        string input = Console.ReadLine();
+                                        if (DateTime.TryParseExact(input, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out noua_data_livrare))
                                         {
-                                            string input = Console.ReadLine();
-                                            if (DateTime.TryParse(input, out noua_data_livrare))
-                                            {
-                                                break;  
-                                            }
-                                            else
-                                            {
-                                                Console.WriteLine("Data introdusă nu este validă. Vă rugăm să introduceți o dată corectă (ex: 31/12/2024).");
-                                            }
+                                            break;
                                         }
-                                        comenziAdministrator.Procesare_comenzi_data_livrare(care_comanda,noua_data_livrare);
-                                        break;
+                                        else
+                                        {
+                                            Console.WriteLine("Data introdusă nu este validă. Vă rugăm să introduceți o dată corectă în formatul dd/MM/yyyy.");
+                                        }
+                                    }
+                                    comenziAdministrator.Procesare_comenzi_data_livrare(care_comanda, noua_data_livrare);
+
+                                    break;
                                     default:
                                         Console.WriteLine("Optiune invalida");
                                         break;

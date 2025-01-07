@@ -1,13 +1,18 @@
-Comanda plasata pe: 1/6/2025 10:30:09 PM
+Număr comandă: 0
+Comanda plasată pe: 09.01.2025 22:23:52
+Data estimată pentru livrare: 11.01.2025
 Nume: a
-Numar telefon: 1213141414
-Email: ceva@gmail.com
-Adresa de livrare: fkjhfkhkjfhakjf
-Status comanda: In asteptare
+Număr telefon: 123123
+Email: aha@gmail.com
+Adresă de livrare: sdfsdgdsgdsg
+Status comandă: In curs de livrare
 
-Comanda plasata pe: 1/6/2025 10:37:44 PM
-Nume: emanuel
-Numar telefon: 07777777777
-Email: ceva@gmail.com
-Adresa de livrare: abcdefghjau
-Status comanda: In curs de livrare
+Număr comandă: 1
+Comanda plasată pe: 12.01.2025 00:00:00
+Data estimată pentru livrare: 14.01.2025
+Nume: b
+Număr telefon: 2343234
+Email: ahaha@gmail.com
+Adresă de livrare: fsdgdgrdfgdddg
+Status comandă: In curs de livrare
+

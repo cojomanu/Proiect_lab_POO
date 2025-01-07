@@ -124,18 +124,48 @@ public static class Validare
     }
 
 
+    // public static void ValidareDataLivrare(DateTime dataLivrare, DateTime dataInitialaComanda)
+    // {
+    //     DateTime dataCurenta = DateTime.Now;
+    //     DateTime dataLimita = dataInitialaComanda.AddDays(14); // 2 saptamani de la data initiala a comenzii
+    //
+    //     if (dataLivrare < dataCurenta)
+    //         ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai devreme decat data curenta."));
+    //     
+    //     if (dataLivrare < dataInitialaComanda)
+    //         ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai devreme decat data initiala a comenzii."));
+    //     
+    //     if (dataLivrare > dataLimita)
+    //         ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai tarziu de doua saptamani de la data initiala a comenzii."));
+    // }
+    // public static void ValidareDataLivrare(DateTime dataLivrare, DateTime dataInitialaComanda)
+    // {
+    //     DateTime dataCurenta = DateTime.Now;
+    //     DateTime dataLimita = dataInitialaComanda.AddDays(14); // 2 săptămâni de la data inițială a comenzii
+    //
+    //     if (dataLivrare < dataCurenta.Date) // Comparam doar data, fără timp
+    //         ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai devreme decât data curentă."));
+    //
+    //     if (dataLivrare < dataInitialaComanda.Date)
+    //         ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai devreme decât data inițială a comenzii."));
+    //
+    //     if (dataLivrare > dataLimita.Date)
+    //         ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai târziu de două săptămâni de la data inițială a comenzii."));
+    // }
+
     public static void ValidareDataLivrare(DateTime dataLivrare, DateTime dataInitialaComanda)
     {
-        DateTime dataCurenta = DateTime.Now;
-        DateTime dataLimita = dataInitialaComanda.AddDays(14); // 2 saptamani de la data initiala a comenzii
+        DateTime dataCurenta = DateTime.Now.Date; // Luăm doar data curentă fără timp
+        DateTime dataLimita = dataInitialaComanda.Date.AddDays(14); // Limita de două săptămâni
 
-        if (dataLivrare < dataCurenta)
-            ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai devreme decat data curenta."));
-        
-        if (dataLivrare < dataInitialaComanda)
-            ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai devreme decat data initiala a comenzii."));
-        
-        if (dataLivrare > dataLimita)
-            ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai tarziu de doua saptamani de la data initiala a comenzii."));
+        if (dataLivrare.Date < dataCurenta) // Comparație doar pe partea de dată
+            ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai devreme decât data curentă."));
+
+        if (dataLivrare.Date < dataInitialaComanda.Date)
+            ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai devreme decât data inițială a comenzii."));
+
+        if (dataLivrare.Date > dataLimita)
+            ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai târziu de două săptămâni de la data inițială a comenzii."));
     }
+
 }

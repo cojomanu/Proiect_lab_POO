@@ -11,7 +11,7 @@ public class Comanda
     public string status { get; private set; }
     public DateTime data_livrare { get; private set; }
 
-    private static int contor = 0;
+    private static int contor = -1;
     
 
     public Comanda(List<ProdusGeneric> cos, string nume_persoana, string numar_telefon, string email, string adresa_livrare)
