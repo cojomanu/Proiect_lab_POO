@@ -1,0 +1,55 @@
+Comanda plasata pe: 1/6/2025 10:30:09 PM
+Nume: a
+Numar telefon: 1213141414
+Email: ceva@gmail.com
+Adresa de livrare: fkjhfkhkjfhakjf
+Status comanda: In asteptare
+
+Comanda plasata pe: 1/6/2025 10:37:44 PM
+Nume: emanuel
+Numar telefon: 07777777777
+Email: ceva@gmail.com
+Adresa de livrare: abcdefghjau
+Status comanda: In curs de livrare
+
+Comanda plasata pe: 1/6/2025 10:46:30 PM
+Nume: a
+Numar telefon: 13131313
+Email: ceva@gmail.com
+Adresa de livrare: fafhfkhfkahf
+Status comanda: In asteptare
+
+Comanda plasata pe: 1/6/2025 11:58:09 PM
+Nume: a
+Numar telefon: sfqr31r
+Email: ceva@gmail.com
+Adresa de livrare: afwsvsfdvsdf
+Status comanda: In asteptare
+
+Comanda plasata pe: 1/7/2025 9:00:59 AM
+Nume: emanuel
+Numar telefon: 12122141414
+Email: ceva@gmail.com
+Adresa de livrare: adafsfsfsefsd
+Status comanda: In asteptare
+
+Comanda plasata pe: 1/7/2025 9:03:51 AM
+Nume: a
+Numar telefon: a
+Email: ceA@gmail.com
+Adresa de livrare: zfsefdsfdgsf
+Status comanda: In asteptare
+
+Comanda plasata pe: 1/7/2025 9:08:16 AM
+Nume: emanuel
+Numar telefon: 2131412413
+Email: ceva@gmail.com
+Adresa de livrare: sfsdfdfdgsfza
+Status comanda: In asteptare
+
+Comanda plasata pe: 1/7/2025 9:10:11 AM
+Nume: emi
+Numar telefon: 41234414
+Email: cvea@gmail.com
+Adresa de livrare: fwsfsdgsdxg
+Status comanda: In asteptare
