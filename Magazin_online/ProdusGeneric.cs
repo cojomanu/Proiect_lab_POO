@@ -21,7 +21,7 @@ public class ProdusGeneric
 
     public void Modificare_stoc(int modificare)
     {
-        this.Stoc = this.Stoc + modificare;
+        this.Stoc += modificare;
     }
 
     public override string ToString() => $"Produsul : {Nume} - {Pret} lei, {Stoc} bucati pe stoc ";

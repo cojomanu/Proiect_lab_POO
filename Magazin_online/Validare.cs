@@ -25,8 +25,8 @@ public static class Validare
 
     public static void ValidareStoc(int stoc)
     {
-        if (stoc < 0)
-            ErrorHandler.Throw(new ArgumentException("Stocul nu poate fi negativ."));
+        if (stoc <=0)
+            ErrorHandler.Throw(new ArgumentException("Stocul nu poate fi negativ(sau epuizat)."));
         
         if (stoc > Config.StocMaxim)
             ErrorHandler.Throw(new ArgumentException($"Stocul produsului nu poate depasi {Config.StocMaxim}."));
@@ -103,14 +103,26 @@ public static class Validare
             ErrorHandler.Throw(new ArgumentException("Conditiile de depozitare trebuie sa contina doar litere mici."));
     }
 
+    // public static void ValidareCantitateStoc(int cantitate, int stocCurent)
+    // {
+    //     // if (cantitate <= 0)
+    //     //     ErrorHandler.Throw(new ArgumentException("Cantitatea trebuie sa fie un numar pozitiv."));
+    //     
+    //     if (cantitate >= stocCurent) 
+    //         ErrorHandler.Throw(new ArgumentException("Cantitatea de stoc scazuta nu poate depasi stocul disponibil."));
+    // }
     public static void ValidareCantitateStoc(int cantitate, int stocCurent)
     {
-        // if (cantitate <= 0)
-        //     ErrorHandler.Throw(new ArgumentException("Cantitatea trebuie sa fie un numar pozitiv."));
-        
-        if ((cantitate >= stocCurent && cantitate<0 && stocCurent-cantitate<=0) || stocCurent <=0)
-            ErrorHandler.Throw(new ArgumentException("Cantitatea de stoc scazuta nu poate depasi stocul disponibil."));
+        // Convertim cantitatea într-un număr pozitiv pentru comparație
+        int cantitateDeScazut = Math.Abs(cantitate);
+
+        // Verificăm dacă se încearcă scăderea mai mult decât stocul disponibil
+        if (cantitate <=0 && cantitateDeScazut >= stocCurent)
+        {
+            ErrorHandler.Throw(new ArgumentException("Cantitatea de stoc scăzută nu poate depăși stocul disponibil."));
+        }
     }
+
 
     public static void ValidareDataLivrare(DateTime dataLivrare, DateTime dataInitialaComanda)
     {
