@@ -276,6 +276,7 @@ while (!exit)
                 
                 break;
             case 2:
+                bool parola_corecta = false;
                 Console.WriteLine("Introduceti parola:");
                 int incercari=0;
                 while (incercari < 3)
@@ -289,11 +290,12 @@ while (!exit)
                     else
                     {
                         Console.WriteLine("Parola Corecta");
+                        parola_corecta = true;
                         break;
                     }
                 }
                 bool iesire_administrator = false;
-                while (!iesire_administrator)
+                while (!iesire_administrator && parola_corecta)
                 {
                     Console.WriteLine("**Optiuni de administrator**");
                     Console.WriteLine("1.Adauga un nou produs in stoc");
