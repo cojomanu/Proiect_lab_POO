@@ -22,3 +22,27 @@ Numar telefon: sfqr31r
 Email: ceva@gmail.com
 Adresa de livrare: afwsvsfdvsdf
 Status comanda: In asteptare
+Comanda plasata pe: 1/7/2025 9:00:59 AM
+Nume: emanuel
+Numar telefon: 12122141414
+Email: ceva@gmail.com
+Adresa de livrare: adafsfsfsefsd
+Status comanda: In asteptare
+Comanda plasata pe: 1/7/2025 9:03:51 AM
+Nume: a
+Numar telefon: a
+Email: ceA@gmail.com
+Adresa de livrare: zfsefdsfdgsf
+Status comanda: In asteptare
+Comanda plasata pe: 1/7/2025 9:08:16 AM
+Nume: emanuel
+Numar telefon: 2131412413
+Email: ceva@gmail.com
+Adresa de livrare: sfsdfdfdgsfza
+Status comanda: In asteptare
+Comanda plasata pe: 1/7/2025 9:10:11 AM
+Nume: emi
+Numar telefon: 41234414
+Email: cvea@gmail.com
+Adresa de livrare: fwsfsdgsdxg
+Status comanda: In asteptare

@@ -50,6 +50,8 @@ AdministrareMagazin comenziAdministrator = new AdministrareMagazin(magazin1);
 
 string path = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\produse.txt"; // Calea fișierului
 AdministrareMagazin.CreazaProdusDinFisier(path,comenziAdministrator);
+comenziAdministrator.IncarcaComenziDinFisier("C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\comenzi.txt");
+
 comenziAdministrator.Adaugare_produs_perisabil(paine);
 comenziAdministrator.Adaugare_produs_perisabil(apa);
 comenziAdministrator.Adaugare_produs_perisabil(suc);
