@@ -5,7 +5,7 @@ public class ProdusPerisabil: ProdusGeneric
     public DateTime DataExpirare { get; private set; }
     public string ConditiiDeDepozitare { get; private set; }
 
-    public ProdusPerisabil(string nume, decimal pret, int stoc,DateTime dataExpirare, string conditiiDeDepozitare) : base(nume,
+    public ProdusPerisabil(string nume, decimal pret, int stoc,DateTime dataExpirare,  string conditiiDeDepozitare) : base(nume,
         pret,stoc)
     {
         this.DataExpirare = dataExpirare;

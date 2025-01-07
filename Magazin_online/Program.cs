@@ -1,4 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿﻿// See https://aka.ms/new-console-template for more information
 using System;
 using System.IO;
 using Magazin_online;
@@ -9,7 +9,7 @@ using Magazin_online;
 // AdministrareMagazin administrareMagazin = new AdministrareMagazin(magazin1);
 //         
 // // Calea către fișierul de intrare (modifică cu calea ta reală)
-// string caleFisier = "";
+// string caleFisier = ""
 //
 // // Apelează metoda pentru citirea produselor din fișier
 // administrareMagazin.CitireProduseDinFisier(caleFisier);
@@ -28,20 +28,8 @@ Console.WriteLine("Eroare cu alb semnifica ca eroarea scrisa cu rosu a fost arun
 Console.ForegroundColor = ConsoleColor.DarkYellow;
 Console.WriteLine("Magazin online");
 Console.ResetColor();
-ProdusPerisabil apa = new ProdusPerisabil("apa",1,1,new DateTime(2025, 01, 8),"uscat");
-ProdusPerisabil paine = new ProdusPerisabil("paine",5,1,new DateTime(2025, 12, 31),"racoros");
-ProdusPerisabil suc = new ProdusPerisabil("suc",3,1,new DateTime(2000, 10, 31),"uscat si racoros");
 
 Magazin magazin1 = new Magazin("magazin1");
-
-
-
-
-
-
-
-
-
 string parola = "parola";
 bool exit = false;
 
@@ -49,20 +37,15 @@ ComenziUtilizator comenziUtilizator = new ComenziUtilizator(magazin1);
 AdministrareMagazin comenziAdministrator = new AdministrareMagazin(magazin1);
 
 string path = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\produse.txt"; // Calea fișierului
+string path_comenzi = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\comenzi.txt";
 // AdministrareMagazin.CreazaProdusDinFisier(path,comenziAdministrator);
 // comenziAdministrator.IncarcaComenziDinFisier("C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\comenzi.txt");
-
-comenziAdministrator.Adaugare_produs_perisabil(paine);
-comenziAdministrator.Adaugare_produs_perisabil(apa);
-comenziAdministrator.Adaugare_produs_perisabil(suc);
-comenziUtilizator.AfisareProduse();
-comenziUtilizator.OrdonareProduseDupaPretCrescator();
-comenziUtilizator.AfisareProduse();
-
+AdministrareMagazin.CreazaProdusDinFisier(path,comenziAdministrator);
+comenziAdministrator.EliminaLiniiDuplicate(path);
+comenziAdministrator.IncarcaComenziDinFisier(path_comenzi);
 while (!exit)
 {
-    AdministrareMagazin.CreazaProdusDinFisier(path,comenziAdministrator);
-    comenziAdministrator.IncarcaComenziDinFisier("C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\comenzi.txt");
+    
     Console.ForegroundColor = ConsoleColor.DarkMagenta;
     Console.WriteLine("***Magazinu lu' Lucas***");
     Console.WriteLine("Alegeti Modul de operare: '1'-utilizator '2'-administrator!");
@@ -267,9 +250,6 @@ while (!exit)
 
                                         // Adăugăm comanda în lista de comenzi
                                         comenziAdministrator.Adaugare_comanda_in_lista_comenzi(comandaUtilizator);
-
-                                        // Afișăm un mesaj de succes
-                                        Console.WriteLine("Comanda a fost plasata cu succes");
                                         break;
                                     case 2:
                                         Console.WriteLine("Comanda nu a fost plasata");
