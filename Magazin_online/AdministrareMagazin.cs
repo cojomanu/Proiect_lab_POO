@@ -439,7 +439,7 @@ public void Modificare_stoc_produs_pe_stoc(string nume_produs, int crestereSAUsc
         }
 
         // Validăm cantitatea de stoc pentru modificare
-        Validare.ValidareCantitateStoc(produs_ales.Stoc, crestereSAUscadere);
+        Validare.ValidareCantitateStoc(crestereSAUscadere,produs_ales.Stoc );
 
         // Modificăm stocul produsului
         produs_ales.Modificare_stoc(crestereSAUscadere);

@@ -105,10 +105,10 @@ public static class Validare
 
     public static void ValidareCantitateStoc(int cantitate, int stocCurent)
     {
-        if (cantitate <= 0)
-            ErrorHandler.Throw(new ArgumentException("Cantitatea trebuie sa fie un numar pozitiv."));
+        // if (cantitate <= 0)
+        //     ErrorHandler.Throw(new ArgumentException("Cantitatea trebuie sa fie un numar pozitiv."));
         
-        if (cantitate > stocCurent)
+        if ((cantitate >= stocCurent && cantitate<0 && stocCurent-cantitate<=0) || stocCurent <=0)
             ErrorHandler.Throw(new ArgumentException("Cantitatea de stoc scazuta nu poate depasi stocul disponibil."));
     }
 
