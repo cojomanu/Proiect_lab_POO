@@ -677,8 +677,66 @@ public void Modificare_stoc_produs_pe_stoc(string nume_produs, int crestereSAUsc
     //     }
     // }
     
+    // public void Procesare_comenzi_status(int care_comanda, int ok)
+    // {
+    //     if (care_comanda < 0 || care_comanda >= comenzi.Count)
+    //     {
+    //         Console.WriteLine("Comanda specificată nu există.");
+    //         return;
+    //     }
+    //
+    //     if (ok == 1)
+    //     {
+    //         comenzi[care_comanda].setStatus("In curs de livrare");
+    //         Console.WriteLine($"Statusul comenzii {care_comanda} a fost schimbat în 'In curs de livrare'.");
+    //     }
+    //     else
+    //     {
+    //         Console.WriteLine("Operațiunea a fost anulată.");
+    //     }
+    // }
+    //
+    //
+    // public void Procesare_comenzi_data_livrare(int care_comanda, DateTime noua_data)
+    // {
+    //     try
+    //     {
+    //         Comanda comanda_aleasa = comenzi.FirstOrDefault(p => p.numar_comanda== care_comanda);
+    //         Validare.ValidareDataLivrare(comanda_aleasa.data_livrare, noua_data);
+    //         comanda_aleasa.set_Data_livrare(noua_data);
+    //         Console.WriteLine("Data livrare modificata cu succes");
+    //     }
+    //     
+    //     catch (ArgumentException ex)
+    //     {
+    //         Console.WriteLine($"Eroare: {ex.Message}");
+    //     }
+    //     
+    // }
+    
+    private void ActualizeazaFisierComenzi(string fisierComenzi)
+    {
+        using (StreamWriter writer = new StreamWriter(fisierComenzi))
+        {
+            foreach (var comanda in comenzi)
+            {
+                writer.WriteLine($"Comanda plasata pe: {comanda.data_livrare.ToString("G")}");
+                writer.WriteLine($"Nume: {comanda.nume_persoana}");
+                writer.WriteLine($"Numar telefon: {comanda.numar_telefon}");
+                writer.WriteLine($"Email: {comanda.email}");
+                writer.WriteLine($"Adresa de livrare: {comanda.adresa_livrare}");
+                writer.WriteLine($"Status comanda: {comanda.status}");
+                writer.WriteLine(); // Linie goală între comenzi
+            }
+        }
+
+        Console.WriteLine("Fișierul a fost actualizat cu succes.");
+    }
+
+    
     public void Procesare_comenzi_status(int care_comanda, int ok)
     {
+        string fisierComenzi = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\comenzi.txt";
         if (care_comanda < 0 || care_comanda >= comenzi.Count)
         {
             Console.WriteLine("Comanda specificată nu există.");
@@ -689,28 +747,40 @@ public void Modificare_stoc_produs_pe_stoc(string nume_produs, int crestereSAUsc
         {
             comenzi[care_comanda].setStatus("In curs de livrare");
             Console.WriteLine($"Statusul comenzii {care_comanda} a fost schimbat în 'In curs de livrare'.");
+
+            // Actualizăm fișierul
+            ActualizeazaFisierComenzi(fisierComenzi);
         }
         else
         {
             Console.WriteLine("Operațiunea a fost anulată.");
         }
     }
-
-
     public void Procesare_comenzi_data_livrare(int care_comanda, DateTime noua_data)
     {
         try
         {
-            Comanda comanda_aleasa = comenzi.FirstOrDefault(p => p.numar_comanda== care_comanda);
+            string fisierComenzi = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\comenzi.txt";
+
+            Comanda comanda_aleasa = comenzi.FirstOrDefault(p => p.numar_comanda == care_comanda);
+
+            if (comanda_aleasa == null)
+            {
+                Console.WriteLine("Comanda specificată nu există.");
+                return;
+            }
+
             Validare.ValidareDataLivrare(comanda_aleasa.data_livrare, noua_data);
             comanda_aleasa.set_Data_livrare(noua_data);
-            Console.WriteLine("Data livrare modificata cu succes");
+            Console.WriteLine("Data livrare modificată cu succes.");
+
+            // Actualizăm fișierul
+            ActualizeazaFisierComenzi(fisierComenzi);
         }
-        
         catch (ArgumentException ex)
         {
             Console.WriteLine($"Eroare: {ex.Message}");
         }
-        
     }
+
 }

@@ -194,7 +194,7 @@ while (!exit)
                             //     Console.WriteLine("Introduceti un numar (nu caractere):");
                             //     string input = Console.ReadLine();
                             //
-                            //     if (int.TryParse(input, out plasare))
+                            //     if (int.TryParse(input, out plasare)`1       )
                             //     {
                             //         break;
                             //     }
