@@ -14,18 +14,19 @@ Console.ResetColor();
 Magazin magazin1 = new Magazin("magazin1");
 string parola = "parola";
 bool exit = false;
-
 ComenziUtilizator comenziUtilizator = new ComenziUtilizator(magazin1);
 AdministrareMagazin comenziAdministrator = new AdministrareMagazin(magazin1);
-
 string path = "C:\\Users\\lucas\\RiderProjects\\Proiect_lab_POO\\Magazin_online\\produse.txt"; // Calea fișierului produse
 string path_comenzi = "C:\\Users\\lucas\\RiderProjects\\Proiect_lab_POO\\Magazin_online\\comenzi.txt";
 
+
+AdministrareMagazin.CreazaProdusDinFisier(path,comenziAdministrator);
+comenziAdministrator.EliminaLiniiDuplicate(path);
+comenziAdministrator.IncarcaComenziDinFisier(path_comenzi);
+
+
 while (!exit)
 {
-    AdministrareMagazin.CreazaProdusDinFisier(path,comenziAdministrator);
-    comenziAdministrator.EliminaLiniiDuplicate(path);
-    comenziAdministrator.IncarcaComenziDinFisier(path_comenzi);
     Console.ForegroundColor = ConsoleColor.DarkMagenta;
     Console.WriteLine("***Magazinu lu' Lucas***");
     Console.WriteLine("Alegeti Modul de operare: '1'-utilizator '2'-administrator!");
