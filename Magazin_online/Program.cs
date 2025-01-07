@@ -49,8 +49,8 @@ ComenziUtilizator comenziUtilizator = new ComenziUtilizator(magazin1);
 AdministrareMagazin comenziAdministrator = new AdministrareMagazin(magazin1);
 
 string path = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\produse.txt"; // Calea fișierului
-AdministrareMagazin.CreazaProdusDinFisier(path,comenziAdministrator);
-comenziAdministrator.IncarcaComenziDinFisier("C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\comenzi.txt");
+// AdministrareMagazin.CreazaProdusDinFisier(path,comenziAdministrator);
+// comenziAdministrator.IncarcaComenziDinFisier("C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\comenzi.txt");
 
 comenziAdministrator.Adaugare_produs_perisabil(paine);
 comenziAdministrator.Adaugare_produs_perisabil(apa);
@@ -61,6 +61,8 @@ comenziUtilizator.AfisareProduse();
 
 while (!exit)
 {
+    AdministrareMagazin.CreazaProdusDinFisier(path,comenziAdministrator);
+    comenziAdministrator.IncarcaComenziDinFisier("C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\comenzi.txt");
     Console.ForegroundColor = ConsoleColor.DarkMagenta;
     Console.WriteLine("***Magazinu lu' Lucas***");
     Console.WriteLine("Alegeti Modul de operare: '1'-utilizator '2'-administrator!");
