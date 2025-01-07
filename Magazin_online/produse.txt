@@ -2,4 +2,5 @@ telefon, 1200.50, 10
 paine, 5, 1, 2025-12-31, racoros
 apa, 1, 1, 2025-01-08, uscat
 benzina, 1, 1
-telefon, 1200.50, 10
+telefon, 120050, 10
+manu, 5, 1
