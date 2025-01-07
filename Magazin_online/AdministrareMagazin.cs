@@ -204,15 +204,12 @@ public static void CreazaProdusDinFisier(string path, AdministrareMagazin comenz
         try
         {
             EliminaLiniiDuplicate(path);
-            // Validare produs
             Validare.ValidareNumeProdus(produs.Nume);
             Validare.ValidarePret(produs.Pret);
             Validare.ValidareStoc(produs.Stoc);
-
-            // Adăugare produs la colecția de produse
+            
             _magazin.Produse.Add(produs);
-
-            // Salvare produs în fișier
+            
             string produsData = $"{produs.Nume}, {produs.Pret}, {produs.Stoc}";
             File.AppendAllText(path, produsData + Environment.NewLine);
         }
