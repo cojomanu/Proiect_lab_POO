@@ -24,12 +24,12 @@ bool exit = false;
 ComenziUtilizator comenziUtilizator = new ComenziUtilizator(magazin1);
 AdministrareMagazin comenziAdministrator = new AdministrareMagazin(magazin1);
 
-string path = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\produse.txt"; // Calea fișierului
-string path_comenzi = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\comenzi.txt";
+//string path = "C:\\Users\\lucas\\RiderProjects\\Proiect_lab_POO\\Magazin_online\\produse.txt"; // Calea fisierului
+//string path_comenzi = "C:\\Users\\lucas\\RiderProjects\\Proiect_lab_POO\\Magazin_online\\comenzi.txt";
 
-AdministrareMagazin.CreazaProdusDinFisier(path,comenziAdministrator);
-comenziAdministrator.EliminaLiniiDuplicate(path);
-comenziAdministrator.IncarcaComenziDinFisier(path_comenzi);
+AdministrareMagazin.CreazaProdusDinFisier(comenziAdministrator);
+comenziAdministrator.EliminaLiniiDuplicate();
+comenziAdministrator.IncarcaComenziDinFisier();
 while (!exit)
 {
     
@@ -183,10 +183,10 @@ while (!exit)
                                 switch (plasare)
                                 {
                                     case 1:
-                                        // Creăm o comandă cu produsele din coș și informațiile utilizatorului
+                                        // Cream o comanda cu produsele din cos si informatiile utilizatorului
                                         Comanda comandaUtilizator = new Comanda(cos, nume, numar_telefon, email, adresa_livrare);
 
-                                        // Adăugăm comanda în lista de comenzi
+                                        // Adaugam comanda in lista de comenzi
                                         comenziAdministrator.Adaugare_comanda_in_lista_comenzi(comandaUtilizator);
                                         break;
                                     case 2:
@@ -331,7 +331,7 @@ while (!exit)
                                        }
                                        else
                                        {
-                                           Console.WriteLine("Data introdusă nu este validă. Vă rugăm să introduceți o dată corectă (ex: 31/12/2024).");
+                                           Console.WriteLine("Data introdusa nu este valida. Va rugam sa introduceti o data corecta (ex: 31/12/2024).");
                                        }
                                    }
 
@@ -496,7 +496,7 @@ while (!exit)
                                         comenziAdministrator.Procesare_comenzi_status(care_comanda,ok_modificare);
                                         break;
                                     case 2:
-                                    Console.WriteLine("Introduceți noua dată de livrare (format: dd/MM/yyyy):");
+                                    Console.WriteLine("Introduceti noua data de livrare (format: dd/MM/yyyy):");
                                     DateTime noua_data_livrare;
                                     while (true)
                                     {
@@ -507,7 +507,7 @@ while (!exit)
                                         }
                                         else
                                         {
-                                            Console.WriteLine("Data introdusă nu este validă. Vă rugăm să introduceți o dată corectă în formatul dd/MM/yyyy.");
+                                            Console.WriteLine("Data introdusa nu este valida. Va rugam sa introduceti o data corecta in formatul dd/MM/yyyy.");
                                         }
                                     }
                                     comenziAdministrator.Procesare_comenzi_data_livrare(care_comanda, noua_data_livrare);
