@@ -149,6 +149,7 @@ while (!exit)
                             }
                             else
                                 Console.WriteLine("Produsul selectat nu exista");
+                            Console.WriteLine(cos);
                             break;
                         case 6:
                             string nume, numar_telefon, email, adresa_livrare;
