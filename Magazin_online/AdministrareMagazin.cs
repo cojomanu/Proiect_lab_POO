@@ -38,7 +38,7 @@ public class AdministrareMagazin:Administrator
             // Daca exista o comanda anterioara, o adaugam in lista
             if (!string.IsNullOrEmpty(nume))
             {
-                Comanda comanda = new Comanda(new List<ProdusGeneric>(), nume, telefon, email, adresa); // Cos ignorat
+                Comanda comanda = new Comanda(new Cos(), nume, telefon, email, adresa); // Cos ignorat
                 comanda.setStatus(status);
                 comanda.set_Data_livrare(dataLivrare);
                 comanda.numar_comanda = numarComanda;
@@ -83,7 +83,7 @@ public class AdministrareMagazin:Administrator
     }
     if (!string.IsNullOrEmpty(nume))
     {
-        Comanda comanda = new Comanda(new List<ProdusGeneric>(), nume, telefon, email, adresa); // Cos ignorat
+        Comanda comanda = new Comanda(new Cos(), nume, telefon, email, adresa); // Cos ignorat
         comanda.setStatus(status);
         comanda.set_Data_livrare(dataLivrare);
         comanda.numar_comanda = numarComanda;

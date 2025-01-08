@@ -2,8 +2,7 @@
 using System;
 using System.IO;
 using Magazin_online;
-
-List<ProdusGeneric> cos=new List<ProdusGeneric>();
+ 
 Console.ForegroundColor = ConsoleColor.DarkRed;
 Console.WriteLine("Eroare cu rosu semnifica semnalarea acesteia , nu este aruncata exceptia care opreste opearatia curenta");
 Console.ResetColor();
@@ -23,10 +22,6 @@ bool exit = false;
 
 ComenziUtilizator comenziUtilizator = new ComenziUtilizator(magazin1);
 AdministrareMagazin comenziAdministrator = new AdministrareMagazin(magazin1);
-
-//string path = "C:\\Users\\lucas\\RiderProjects\\Proiect_lab_POO\\Magazin_online\\produse.txt"; // Calea fisierului
-//string path_comenzi = "C:\\Users\\lucas\\RiderProjects\\Proiect_lab_POO\\Magazin_online\\comenzi.txt";
-
 AdministrareMagazin.CreazaProdusDinFisier(comenziAdministrator);
 comenziAdministrator.EliminaLiniiDuplicate();
 comenziAdministrator.IncarcaComenziDinFisier();
@@ -57,6 +52,7 @@ while (!exit)
         switch (mod)
         {
             case 1:
+                Cos cos= new Cos(); 
                 bool iesire_utilizator = false;
                 while (!iesire_utilizator)
                 {
@@ -135,7 +131,6 @@ while (!exit)
                             }
                             break;
                         case 5:
-                            comenziUtilizator.AfisareProduse();
                             Console.WriteLine("Ce produs adaugati in cos?");
                             string produs_de_adaugat=Console.ReadLine();
                             int care_produs=-1;
@@ -144,12 +139,11 @@ while (!exit)
                                     care_produs = i;
                             if (care_produs!=-1)
                             {
-                                cos.Add(magazin1.Produse[care_produs]);
+                                cos.AdaugareProdusInCos(magazin1.Produse[care_produs]);
                                 Console.WriteLine("Produs adaugat in cos!");
                             }
                             else
                                 Console.WriteLine("Produsul selectat nu exista");
-                            Console.WriteLine(cos);
                             break;
                         case 6:
                             string nume, numar_telefon, email, adresa_livrare;
@@ -180,7 +174,7 @@ while (!exit)
 
                             try
                             {
-                                Validare.ValidareCos(cos);
+                                Validare.ValidareCos(cos.Cos_produse);
                                 switch (plasare)
                                 {
                                     case 1:
