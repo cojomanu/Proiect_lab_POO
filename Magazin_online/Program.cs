@@ -1,75 +1,46 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿﻿// See https://aka.ms/new-console-template for more information
 using System;
 using System.IO;
 using Magazin_online;
-// // Creează un magazin gol
-// Magazin magazin1 = new Magazin("Magazin1");
-//         
-// // Creează instanța pentru administrarea magazinului
-// AdministrareMagazin administrareMagazin = new AdministrareMagazin(magazin1);
-//         
-// // Calea către fișierul de intrare (modifică cu calea ta reală)
-// string caleFisier = "";
-//
-// // Apelează metoda pentru citirea produselor din fișier
-// administrareMagazin.CitireProduseDinFisier(caleFisier);
-//
-// // Afișează produsele pentru a verifica rezultatul
-// Console.WriteLine("Produsele citite din fișier:");
-// foreach (var produs in magazin1.Produse)
-// {
-//     Console.WriteLine(produs);
-// }
+
 List<ProdusGeneric> cos=new List<ProdusGeneric>();
-Console.ForegroundColor = ConsoleColor.DarkBlue;
+Console.ForegroundColor = ConsoleColor.DarkRed;
 Console.WriteLine("Eroare cu rosu semnifica semnalarea acesteia , nu este aruncata exceptia care opreste opearatia curenta");
 Console.ResetColor();
 Console.WriteLine("Eroare cu alb semnifica ca eroarea scrisa cu rosu a fost aruncata si astfel operatia curenta gresita a fost oprita");
-Console.ForegroundColor = ConsoleColor.DarkYellow;
-Console.WriteLine("Magazin online");
-Console.ResetColor();
-ProdusPerisabil apa = new ProdusPerisabil("apa",1,1,new DateTime(2025, 01, 8),"uscat");
-ProdusPerisabil paine = new ProdusPerisabil("paine",5,1,new DateTime(2025, 12, 31),"racoros");
-ProdusPerisabil suc = new ProdusPerisabil("suc",3,1,new DateTime(2000, 10, 31),"uscat si racoros");
+Console.WriteLine();
+
+void mesaj_caractere()
+{
+    Console.ForegroundColor = ConsoleColor.DarkYellow;
+    Console.WriteLine("Introduceti un numar (nu caractere):");
+    Console.ResetColor();
+}
 
 Magazin magazin1 = new Magazin("magazin1");
-
-
-
-
-
-
-
-
-
 string parola = "parola";
 bool exit = false;
 
 ComenziUtilizator comenziUtilizator = new ComenziUtilizator(magazin1);
 AdministrareMagazin comenziAdministrator = new AdministrareMagazin(magazin1);
 
-string path = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\produse.txt"; // Calea fișierului
-// AdministrareMagazin.CreazaProdusDinFisier(path,comenziAdministrator);
-// comenziAdministrator.IncarcaComenziDinFisier("C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\comenzi.txt");
+//string path = "C:\\Users\\lucas\\RiderProjects\\Proiect_lab_POO\\Magazin_online\\produse.txt"; // Calea fisierului
+//string path_comenzi = "C:\\Users\\lucas\\RiderProjects\\Proiect_lab_POO\\Magazin_online\\comenzi.txt";
 
-comenziAdministrator.Adaugare_produs_perisabil(paine);
-comenziAdministrator.Adaugare_produs_perisabil(apa);
-comenziAdministrator.Adaugare_produs_perisabil(suc);
-comenziUtilizator.AfisareProduse();
-comenziUtilizator.OrdonareProduseDupaPretCrescator();
-comenziUtilizator.AfisareProduse();
-
+AdministrareMagazin.CreazaProdusDinFisier(comenziAdministrator);
+comenziAdministrator.EliminaLiniiDuplicate();
+comenziAdministrator.IncarcaComenziDinFisier();
 while (!exit)
 {
-    AdministrareMagazin.CreazaProdusDinFisier(path,comenziAdministrator);
-    comenziAdministrator.IncarcaComenziDinFisier("C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\comenzi.txt");
+    
+    Console.WriteLine();
     Console.ForegroundColor = ConsoleColor.DarkMagenta;
     Console.WriteLine("***Magazinu lu' Lucas***");
     Console.WriteLine("Alegeti Modul de operare: '1'-utilizator '2'-administrator!");
         int mod;
         while (true)
         {
-            Console.WriteLine("Introduceti un numar (nu caractere):");
+            mesaj_caractere();
             string input = Console.ReadLine();
     
             if (int.TryParse(input, out mod))
@@ -102,7 +73,7 @@ while (!exit)
                     int optiune_utilizator;
                     while (true)
                     {
-                        Console.WriteLine("Introduceti un numar (nu caractere):");
+                        mesaj_caractere();
                         string input = Console.ReadLine();
     
                         if (int.TryParse(input, out optiune_utilizator))
@@ -134,7 +105,7 @@ while (!exit)
                             int optiune_sortare;
                             while (true)
                             {
-                                Console.WriteLine("Introduceti un numar (nu caractere):");
+                                mesaj_caractere();
                                 string input = Console.ReadLine();
     
                                 if (int.TryParse(input, out optiune_sortare))
@@ -178,58 +149,9 @@ while (!exit)
                             }
                             else
                                 Console.WriteLine("Produsul selectat nu exista");
+                            Console.WriteLine(cos);
                             break;
                         case 6:
-                            // string nume, numar_telefon, email, adresa_livrare;
-                            // Console.WriteLine("Nume:"); 
-                            // nume=Console.ReadLine();
-                            // Console.WriteLine("Numar_telefon:");
-                            // numar_telefon=Console.ReadLine();
-                            // Console.WriteLine("Email:"); 
-                            // email=Console.ReadLine();
-                            // Console.WriteLine("Adresa livrare:"); 
-                            // adresa_livrare=Console.ReadLine();
-                            // Console.WriteLine("Doriti sa plasati comanda 1-da,2-no");
-                            // int plasare;
-                            // while (true)
-                            // {
-                            //     Console.WriteLine("Introduceti un numar (nu caractere):");
-                            //     string input = Console.ReadLine();
-                            //
-                            //     if (int.TryParse(input, out plasare)`1       )
-                            //     {
-                            //         break;
-                            //     }
-                            //     else
-                            //     {
-                            //         Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
-                            //     }
-                            // }
-                            //
-                            // try
-                            // {
-                            //     Validare.ValidareCos(cos);
-                            //     switch (plasare)
-                            //     {
-                            //         case 1:
-                            //             Comanda comanda_utilizator=new Comanda(cos,nume, numar_telefon, email, adresa_livrare);
-                            //             comenziAdministrator.Adaugare_comanda_in_lista_comenzi(comanda_utilizator);
-                            //             Console.WriteLine("Comanda a fost plasata cu succes");
-                            //             break;
-                            //         case 2:
-                            //             Console.WriteLine("Comanda nu a fost plasata");
-                            //             break;
-                            //         default:
-                            //             Console.WriteLine("Optiune invalida");
-                            //             break;
-                            //     }
-                            // }
-                            // catch (ArgumentException ex)
-                            // {
-                            //     Console.WriteLine($"Eroare: {ex.Message}");
-                            // }
-                            //
-                            // Codul pentru plasarea comenzii
                             string nume, numar_telefon, email, adresa_livrare;
                             Console.WriteLine("Nume:"); 
                             nume = Console.ReadLine();
@@ -243,7 +165,7 @@ while (!exit)
                             int plasare;
                             while (true)
                             {
-                                Console.WriteLine("Introduceti un numar (nu caractere):");
+                                mesaj_caractere();
                                 string input = Console.ReadLine();
 
                                 if (int.TryParse(input, out plasare))
@@ -262,14 +184,11 @@ while (!exit)
                                 switch (plasare)
                                 {
                                     case 1:
-                                        // Creăm o comandă cu produsele din coș și informațiile utilizatorului
+                                        // Cream o comanda cu produsele din cos si informatiile utilizatorului
                                         Comanda comandaUtilizator = new Comanda(cos, nume, numar_telefon, email, adresa_livrare);
 
-                                        // Adăugăm comanda în lista de comenzi
+                                        // Adaugam comanda in lista de comenzi
                                         comenziAdministrator.Adaugare_comanda_in_lista_comenzi(comandaUtilizator);
-
-                                        // Afișăm un mesaj de succes
-                                        Console.WriteLine("Comanda a fost plasata cu succes");
                                         break;
                                     case 2:
                                         Console.WriteLine("Comanda nu a fost plasata");
@@ -296,6 +215,7 @@ while (!exit)
                 
                 break;
             case 2:
+                bool parola_corecta = false;
                 Console.WriteLine("Introduceti parola:");
                 int incercari=0;
                 while (incercari < 3)
@@ -309,11 +229,12 @@ while (!exit)
                     else
                     {
                         Console.WriteLine("Parola Corecta");
+                        parola_corecta = true;
                         break;
                     }
                 }
                 bool iesire_administrator = false;
-                while (!iesire_administrator)
+                while (!iesire_administrator && parola_corecta)
                 {
                     Console.WriteLine("**Optiuni de administrator**");
                     Console.WriteLine("1.Adauga un nou produs in stoc");
@@ -325,7 +246,7 @@ while (!exit)
                     int optiune_administrator;
                     while (true)
                     {
-                        Console.WriteLine("Introduceti un numar (nu caractere):");
+                        mesaj_caractere();
                         string input = Console.ReadLine();
     
                         if (int.TryParse(input, out optiune_administrator))
@@ -346,10 +267,9 @@ while (!exit)
                             Console.WriteLine("Introdu numele produsului:");
                             nume=Console.ReadLine();
                             Console.WriteLine("Introdu Pretul produsului:");
-                            // pret=decimal.Parse(Console.ReadLine());
                             while (true)
                             {
-                                Console.WriteLine("Introduceti un numar (nu caractere):");
+                                mesaj_caractere();
                                 string input = Console.ReadLine();
     
                                 if (decimal.TryParse(input, out pret))
@@ -362,10 +282,9 @@ while (!exit)
                                 }
                             }
                             Console.WriteLine("Introdu stocul produsului:");
-                            // stoc=int.Parse(Console.ReadLine());
                             while (true)
                             {
-                                Console.WriteLine("Introduceti un numar (nu caractere):");
+                                mesaj_caractere();
                                 string input = Console.ReadLine();
     
                                 if (int.TryParse(input, out stoc))
@@ -381,7 +300,7 @@ while (!exit)
                             int optiune_produs;
                             while (true)
                             {
-                                Console.WriteLine("Introduceti un numar (nu caractere):");
+                                mesaj_caractere();
                                 string input = Console.ReadLine();
     
                                 if (int.TryParse(input, out optiune_produs))
@@ -400,17 +319,6 @@ while (!exit)
                                    comenziAdministrator.Adaugare_produs_generic(produs_generic);
                                    comenziUtilizator.AfisareProduse();
                                    break;
-                               // case 2:
-                               //     DateTime data_expirare;
-                               //     string conditii_pastrare;
-                               //     Console.WriteLine("Introduceti data de expirare a produsului:");
-                               //     data_expirare=DateTime.Parse(Console.ReadLine());
-                               //     Console.WriteLine("Introduceti conditiile de pastrare ale produsului:");
-                               //     conditii_pastrare=Console.ReadLine();
-                               //     ProdusGeneric produs_perisabil = new ProdusPerisabil(nume, pret, stoc,data_expirare,conditii_pastrare);
-                               //     comenziAdministrator.Adaugare_produs(produs_perisabil);
-                               //     comenziUtilizator.AfisareProduse();
-                               //     break;
                                case 2:
                                    DateTime data_expirare;
                                    string conditii_pastrare;
@@ -424,7 +332,7 @@ while (!exit)
                                        }
                                        else
                                        {
-                                           Console.WriteLine("Data introdusă nu este validă. Vă rugăm să introduceți o dată corectă (ex: 31/12/2024).");
+                                           Console.WriteLine("Data introdusa nu este valida. Va rugam sa introduceti o data corecta (ex: 31/12/2024).");
                                        }
                                    }
 
@@ -434,7 +342,6 @@ while (!exit)
                                    comenziAdministrator.Adaugare_produs_perisabil(produs_perisabil);
                                    comenziUtilizator.AfisareProduse();
                                    break;
-//validare
                                case 3:
                                    string clasa_eficienta;
                                    Console.WriteLine("Introduceti clasa de eficienta a produsului:");
@@ -443,7 +350,7 @@ while (!exit)
                                    int putere_maxima;
                                    while (true)
                                    {
-                                       Console.WriteLine("Introduceti un numar (nu caractere):");
+                                       mesaj_caractere();
                                        string input = Console.ReadLine();
     
                                        if (int.TryParse(input, out putere_maxima))
@@ -483,7 +390,7 @@ while (!exit)
                                     int crestere_stoc;
                                     while (true)
                                     {
-                                        Console.WriteLine("Introduceti un numar (nu caractere):");
+                                        mesaj_caractere();
                                         string input = Console.ReadLine();
     
                                         if (int.TryParse(input, out crestere_stoc))
@@ -503,7 +410,7 @@ while (!exit)
                                     int scadere_stoc;
                                     while (true)
                                     {
-                                        Console.WriteLine("Introduceti un numar (nu caractere):");
+                                        mesaj_caractere();
                                         string input = Console.ReadLine();
     
                                         if (int.TryParse(input, out scadere_stoc))
@@ -531,7 +438,7 @@ while (!exit)
                             int care_comanda;
                             while (true)
                             {
-                                Console.WriteLine("Introduceti un numar (nu caractere):");
+                                mesaj_caractere();
                                 string input = Console.ReadLine();
                             
                                 if (int.TryParse(input, out care_comanda))
@@ -547,11 +454,12 @@ while (!exit)
                             bool iesire_procesare = false;
                             while (!iesire_procesare)
                             {
+                                Console.WriteLine();
                                 Console.WriteLine("Doriti sa 1-schimbati statusul, 2-schimbati data livrarii, 0-iesire meniu procesare:");
                                 int optiune_procesare;
                                 while (true)
                                 {
-                                    Console.WriteLine("Introduceti un numar (nu caractere):");
+                                    mesaj_caractere();
                                     string input = Console.ReadLine();
                             
                                     if (int.TryParse(input, out optiune_procesare))
@@ -570,13 +478,14 @@ while (!exit)
                                         iesire_procesare=true;
                                         break;
                                     case 1:
-                                        int modificare;
+                                        int ok_modificare;
                                         while (true)
                                         {
-                                            Console.WriteLine("Introduceti un numar (nu caractere):");
+                                            Console.WriteLine("Schimbati statusul in 'in curs de livrare'? 1-da");
+                                            mesaj_caractere();
                                             string input = Console.ReadLine();
                             
-                                            if (int.TryParse(input, out modificare))
+                                            if (int.TryParse(input, out ok_modificare))
                                             {
                                                 break;
                                             }
@@ -585,26 +494,26 @@ while (!exit)
                                                 Console.WriteLine("Input invalid. Va rugam sa introduceti un numar.");
                                             }
                                         }
-                                        Console.WriteLine("Doriti sa modificati statusul comenzii in 'In curs de livrare'? 1-Da, 0-Nu");
-                                        comenziAdministrator.Procesare_comenzi_status(care_comanda,modificare);
+                                        comenziAdministrator.Procesare_comenzi_status(care_comanda,ok_modificare);
                                         break;
                                     case 2:
-                                        Console.WriteLine("Introduceti noua data");
-                                        DateTime noua_data_livrare;
-                                        while (true)
+                                    Console.WriteLine("Introduceti noua data de livrare (format: dd/MM/yyyy):");
+                                    DateTime noua_data_livrare;
+                                    while (true)
+                                    {
+                                        string input = Console.ReadLine();
+                                        if (DateTime.TryParseExact(input, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out noua_data_livrare))
                                         {
-                                            string input = Console.ReadLine();
-                                            if (DateTime.TryParse(input, out noua_data_livrare))
-                                            {
-                                                break;  
-                                            }
-                                            else
-                                            {
-                                                Console.WriteLine("Data introdusă nu este validă. Vă rugăm să introduceți o dată corectă (ex: 31/12/2024).");
-                                            }
+                                            break;
                                         }
-                                        comenziAdministrator.Procesare_comenzi_data_livrare(care_comanda,noua_data_livrare);
-                                        break;
+                                        else
+                                        {
+                                            Console.WriteLine("Data introdusa nu este valida. Va rugam sa introduceti o data corecta in formatul dd/MM/yyyy.");
+                                        }
+                                    }
+                                    comenziAdministrator.Procesare_comenzi_data_livrare(care_comanda, noua_data_livrare);
+
+                                    break;
                                     default:
                                         Console.WriteLine("Optiune invalida");
                                         break;
@@ -623,4 +532,3 @@ while (!exit)
                 break;
         }
     }
-    

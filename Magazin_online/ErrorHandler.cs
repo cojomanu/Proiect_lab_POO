@@ -13,6 +13,6 @@ public static class ErrorHandler
     {
         
         HandleException(ex);
-        throw ex; // Re-aruncă excepția
+        throw ex; 
     }
 }

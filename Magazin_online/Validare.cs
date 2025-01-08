@@ -25,8 +25,8 @@ public static class Validare
 
     public static void ValidareStoc(int stoc)
     {
-        if (stoc < 0)
-            ErrorHandler.Throw(new ArgumentException("Stocul nu poate fi negativ."));
+        if (stoc <=0)
+            ErrorHandler.Throw(new ArgumentException("Stocul nu poate fi negativ(sau epuizat)."));
         
         if (stoc > Config.StocMaxim)
             ErrorHandler.Throw(new ArgumentException($"Stocul produsului nu poate depasi {Config.StocMaxim}."));
@@ -105,25 +105,27 @@ public static class Validare
 
     public static void ValidareCantitateStoc(int cantitate, int stocCurent)
     {
-        if (cantitate <= 0)
-            ErrorHandler.Throw(new ArgumentException("Cantitatea trebuie sa fie un numar pozitiv."));
-        
-        if (cantitate > stocCurent)
+        int cantitateDeScazut = Math.Abs(cantitate);
+
+        if (cantitate <=0 && cantitateDeScazut >= stocCurent)
+        {
             ErrorHandler.Throw(new ArgumentException("Cantitatea de stoc scazuta nu poate depasi stocul disponibil."));
+        }
     }
 
     public static void ValidareDataLivrare(DateTime dataLivrare, DateTime dataInitialaComanda)
     {
-        DateTime dataCurenta = DateTime.Now;
-        DateTime dataLimita = dataInitialaComanda.AddDays(14); // 2 saptamani de la data initiala a comenzii
+        DateTime dataCurenta = DateTime.Now.Date; 
+        DateTime dataLimita = dataInitialaComanda.Date.AddDays(14); 
 
-        if (dataLivrare < dataCurenta)
+        if (dataLivrare.Date < dataCurenta)
             ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai devreme decat data curenta."));
-        
-        if (dataLivrare < dataInitialaComanda)
+
+        if (dataLivrare.Date < dataInitialaComanda.Date)
             ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai devreme decat data initiala a comenzii."));
-        
-        if (dataLivrare > dataLimita)
+
+        if (dataLivrare.Date > dataLimita)
             ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai tarziu de doua saptamani de la data initiala a comenzii."));
     }
+
 }
