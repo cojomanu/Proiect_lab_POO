@@ -103,62 +103,22 @@ public static class Validare
             ErrorHandler.Throw(new ArgumentException("Conditiile de depozitare trebuie sa contina doar litere mici."));
     }
 
-    // public static void ValidareCantitateStoc(int cantitate, int stocCurent)
-    // {
-    //     // if (cantitate <= 0)
-    //     //     ErrorHandler.Throw(new ArgumentException("Cantitatea trebuie sa fie un numar pozitiv."));
-    //     
-    //     if (cantitate >= stocCurent) 
-    //         ErrorHandler.Throw(new ArgumentException("Cantitatea de stoc scazuta nu poate depasi stocul disponibil."));
-    // }
     public static void ValidareCantitateStoc(int cantitate, int stocCurent)
     {
-        // Convertim cantitatea într-un număr pozitiv pentru comparație
         int cantitateDeScazut = Math.Abs(cantitate);
 
-        // Verificăm dacă se încearcă scăderea mai mult decât stocul disponibil
         if (cantitate <=0 && cantitateDeScazut >= stocCurent)
         {
             ErrorHandler.Throw(new ArgumentException("Cantitatea de stoc scăzută nu poate depăși stocul disponibil."));
         }
     }
 
-
-    // public static void ValidareDataLivrare(DateTime dataLivrare, DateTime dataInitialaComanda)
-    // {
-    //     DateTime dataCurenta = DateTime.Now;
-    //     DateTime dataLimita = dataInitialaComanda.AddDays(14); // 2 saptamani de la data initiala a comenzii
-    //
-    //     if (dataLivrare < dataCurenta)
-    //         ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai devreme decat data curenta."));
-    //     
-    //     if (dataLivrare < dataInitialaComanda)
-    //         ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai devreme decat data initiala a comenzii."));
-    //     
-    //     if (dataLivrare > dataLimita)
-    //         ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai tarziu de doua saptamani de la data initiala a comenzii."));
-    // }
-    // public static void ValidareDataLivrare(DateTime dataLivrare, DateTime dataInitialaComanda)
-    // {
-    //     DateTime dataCurenta = DateTime.Now;
-    //     DateTime dataLimita = dataInitialaComanda.AddDays(14); // 2 săptămâni de la data inițială a comenzii
-    //
-    //     if (dataLivrare < dataCurenta.Date) // Comparam doar data, fără timp
-    //         ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai devreme decât data curentă."));
-    //
-    //     if (dataLivrare < dataInitialaComanda.Date)
-    //         ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai devreme decât data inițială a comenzii."));
-    //
-    //     if (dataLivrare > dataLimita.Date)
-    //         ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai târziu de două săptămâni de la data inițială a comenzii."));
-    // }
-
     public static void ValidareDataLivrare(DateTime dataLivrare, DateTime dataInitialaComanda)
     {
-        DateTime dataCurenta = DateTime.Now.Date; // Luăm doar data curentă fără timp
-        DateTime dataLimita = dataInitialaComanda.Date.AddDays(14); // Limita de două săptămâni
+        DateTime dataCurenta = DateTime.Now.Date; 
+        DateTime dataLimita = dataInitialaComanda.Date.AddDays(14); 
 
-        if (dataLivrare.Date < dataCurenta) // Comparație doar pe partea de dată
+        if (dataLivrare.Date < dataCurenta)
             ErrorHandler.Throw(new ArgumentException("Data de livrare nu poate fi mai devreme decât data curentă."));
 
         if (dataLivrare.Date < dataInitialaComanda.Date)
