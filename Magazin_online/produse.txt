@@ -1,5 +1,4 @@
 telefon, 1250, 10
-apa, 1, 6
 benzina, 1, 11
 goron, 2, 1
 manu, 1, 1

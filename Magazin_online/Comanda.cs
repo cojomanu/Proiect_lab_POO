@@ -13,6 +13,9 @@ public class Comanda
 
     private static int contor = -1;
     
+    public DateTime estimare_data_livrare { get; private set; }
+
+    
 
     public Comanda(List<ProdusGeneric> cos, string nume_persoana, string numar_telefon, string email, string adresa_livrare)
     {
@@ -23,8 +26,9 @@ public class Comanda
         this.numar_telefon = numar_telefon;
         this.email = email;
         this.adresa_livrare = adresa_livrare;
-        data_livrare = DateTime.Now.AddDays(2);
-        if (data_livrare < DateTime.Now)
+        data_livrare = DateTime.Now;
+        estimare_data_livrare = DateTime.Now.AddDays(2);
+        if (estimare_data_livrare < DateTime.Now)
         {
             status = "Livrat";
         }
@@ -41,7 +45,7 @@ public class Comanda
 
     public void set_Data_livrare(DateTime data_noua)
     {
-        this.data_livrare = data_noua;
+        this.estimare_data_livrare = data_noua;
     }
 
     public override string ToString()

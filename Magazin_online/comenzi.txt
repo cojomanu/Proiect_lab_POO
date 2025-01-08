@@ -1,27 +1,18 @@
 Număr comandă: 0
-Comanda plasată pe: 09.01.2025 22:23:52
-Data estimată pentru livrare: 11.01.2025
-Nume: a
-Număr telefon: 123123
-Email: aha@gmail.com
-Adresă de livrare: sdfsdgdsgdsg
-Status comandă: In curs de livrare
+Comanda plasată pe: 08.01.2025 21:18:35
+Data estimată pentru livrare: 16.01.2025
+Nume: emoi
+Număr telefon: 12321313
+Email: ceva@gmail.com
+Adresă de livrare: dfsdfsdfsf
+Status comandă: In asteptare
 
 Număr comandă: 1
-Comanda plasată pe: 12.01.2025 00:00:00
-Data estimată pentru livrare: 14.01.2025
-Nume: b
-Număr telefon: 2343234
-Email: ahaha@gmail.com
-Adresă de livrare: fsdgdgrdfgdddg
-Status comandă: In curs de livrare
-
-Număr comandă: 2
-Comanda plasată pe: 14.01.2025 00:00:00
-Data estimată pentru livrare: 16.01.2025
-Nume: Lucas
-Număr telefon: 072908789
-Email: lucas@manu.com
-Adresă de livrare: khjweijbdwf
-Status comandă: In curs de livrare
+Comanda plasată pe: 08.01.2025 21:31:59
+Data estimată pentru livrare: 18.01.2025
+Nume: aha
+Număr telefon: 1213113
+Email: aha@gmail.com
+Adresă de livrare: xdfsxgsdgsdg
+Status comandă: In asteptare
 

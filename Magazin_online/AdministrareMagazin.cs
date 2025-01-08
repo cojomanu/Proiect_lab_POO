@@ -10,8 +10,8 @@ public class AdministrareMagazin:Administrator
         _magazin = magazin;
     }
     
-    static string path = "C:\\Users\\lucas\\RiderProjects\\Proiect_lab_POO\\Magazin_online\\produse.txt";
-    static string path_comenzi = "C:\\Users\\lucas\\RiderProjects\\Proiect_lab_POO\\Magazin_online\\comenzi.txt"; // Calea către fișierul de comenzi
+    static string path = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\produse.txt";
+    static string path_comenzi = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect magazin online\\Magazin_online\\comenzi.txt"; // Calea către fișierul de comenzi
 
     public void IncarcaComenziDinFisier(string fisierComenzi)
 {
@@ -511,7 +511,7 @@ public void Modificare_stoc_produs_pe_stoc(string nume_produs, int crestereSAUsc
                 {
                     writer.WriteLine($"Număr comandă: {comanda.numar_comanda}");
                     writer.WriteLine($"Comanda plasată pe: {comanda.data_livrare.ToString("dd.MM.yyyy HH:mm:ss")}");
-                    writer.WriteLine($"Data estimată pentru livrare: {comanda.data_livrare.AddDays(2).ToString("dd.MM.yyyy")}");
+                    writer.WriteLine($"Data estimată pentru livrare: {comanda.estimare_data_livrare.ToString("dd.MM.yyyy")}");
                     writer.WriteLine($"Nume: {comanda.nume_persoana}");
                     writer.WriteLine($"Număr telefon: {comanda.numar_telefon}");
                     writer.WriteLine($"Email: {comanda.email}");
@@ -562,7 +562,7 @@ public void Modificare_stoc_produs_pe_stoc(string nume_produs, int crestereSAUsc
                 return;
             }
 
-            Validare.ValidareDataLivrare(noua_data, comanda_aleasa.data_livrare);
+            Validare.ValidareDataLivrare(noua_data, comanda_aleasa.estimare_data_livrare);
             comanda_aleasa.set_Data_livrare(noua_data);
             Console.WriteLine("Data livrare modificată cu succes.");
             
