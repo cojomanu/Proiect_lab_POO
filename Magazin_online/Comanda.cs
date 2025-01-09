@@ -3,7 +3,7 @@ namespace Magazin_online;
 public class Comanda
 {
     public int numar_comanda { get; set; }
-    public List<ProdusGeneric> Cos_produse { get; private set; }
+    public Cos Cos_produse { get; private set; }
     public string nume_persoana { get; private set; }
     public string numar_telefon { get; private set; }
     public string email { get; private set; }
@@ -17,7 +17,7 @@ public class Comanda
 
     
 
-    public Comanda(List<ProdusGeneric> cos, string nume_persoana, string numar_telefon, string email, string adresa_livrare)
+    public Comanda(Cos cos, string nume_persoana, string numar_telefon, string email, string adresa_livrare)
     {
         contor++;
         this.numar_comanda = contor;
