@@ -19,7 +19,7 @@ void mesaj_caractere()
 Magazin magazin1 = new Magazin("magazin1");
 string parola = "parola";
 bool exit = false;
-
+bool sunt_user = false;
 ComenziUtilizator comenziUtilizator = new ComenziUtilizator(magazin1);
 AdministrareMagazin comenziAdministrator = new AdministrareMagazin(magazin1);
 AdministrareMagazin.CreazaProdusDinFisier(comenziAdministrator);
@@ -27,7 +27,7 @@ comenziAdministrator.EliminaLiniiDuplicate();
 comenziAdministrator.IncarcaComenziDinFisier();
 while (!exit)
 {
-    
+    Cos cos= new Cos();
     Console.WriteLine();
     Console.ForegroundColor = ConsoleColor.DarkMagenta;
     Console.WriteLine("***Magazinu lu' Lucas***");
@@ -52,7 +52,8 @@ while (!exit)
         switch (mod)
         {
             case 1:
-                Cos cos= new Cos(); 
+                sunt_user = true;
+                // Cos cos= new Cos();
                 bool iesire_utilizator = false;
                 while (!iesire_utilizator)
                 {
@@ -139,7 +140,7 @@ while (!exit)
                                     care_produs = i;
                             if (care_produs!=-1)
                             {
-                                cos.AdaugareProdusInCos(magazin1.Produse[care_produs]);
+                                cos.AdaugareProdusInCos(magazin1.Produse[care_produs].Nume);
                                 Console.WriteLine("Produs adaugat in cos!");
                             }
                             else
@@ -183,6 +184,8 @@ while (!exit)
 
                                         // Adaugam comanda in lista de comenzi
                                         comenziAdministrator.Adaugare_comanda_in_lista_comenzi(comandaUtilizator);
+                                        
+                                        // cos.Golire_cos();
                                         break;
                                     case 2:
                                         Console.WriteLine("Comanda nu a fost plasata");
@@ -200,6 +203,7 @@ while (!exit)
                             break;
                         case 7:
                             iesire_utilizator = true;
+                            // cos.Golire_cos();
                             break;
                         default:
                             Console.WriteLine("Optiune invalida");
@@ -517,6 +521,8 @@ while (!exit)
                             break;
                         case 6:
                             iesire_administrator = true;
+                            if(sunt_user==false)
+                                cos.Golire_cos();
                             break;
                         default:
                             Console.WriteLine("Optiune invalida");

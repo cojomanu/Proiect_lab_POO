@@ -68,7 +68,7 @@ public static class Validare
             ErrorHandler.Throw(new ArgumentException("Adresa de e-mail nu este valida."));
     }
 
-    public static void ValidareCos(List<ProdusGeneric> produseDinCos)
+    public static void ValidareCos(List<string> produseDinCos)
     {
         if (produseDinCos == null || produseDinCos.Count == 0)
             ErrorHandler.Throw(new ArgumentException("Cosul de cumparaturi este gol. Adauga produse inainte de a plasa comanda."));

@@ -1,34 +1,30 @@
 Numar comanda: 0
-Comanda plasata pe: 08.01.2025 22:48:10
-Data estimata pentru livrare: 10.01.2025
-Nume: Lucas
-Numar telefon: 9347291704
-Email: test1@lucas.com
-Adresa de livrare: foewjfiqhfdq
-Status comanda: In asteptare
+Comanda plasata pe: 09.01.2025 11:34:31
+Data estimata pentru livrare: 01.09.2025
+Nume: manu
+Numar telefon: 123123
+Email: manu@gmail.com
+Adresa de livrare: ahaahaahaaha
+Status comanda: In curs de livrare
+Cos: manu
 
 Numar comanda: 1
-Comanda plasata pe: 08.01.2025 22:48:34
-Data estimata pentru livrare: 15.01.2025
-Nume: Manu
-Numar telefon: 397904710974
-Email: test2@manu.com
-Adresa de livrare: wekhfoihfwef
+Comanda plasata pe: 09.01.2025 11:34:31
+Data estimata pentru livrare: 01.09.2025
+Nume: lucas
+Numar telefon: 0777777777
+Email: lucas@gmail.com
+Adresa de livrare: pestetotsiniciunde
 Status comanda: In curs de livrare
+Cos: telefon
 
 Numar comanda: 2
-Comanda plasata pe: 08.01.2025 22:50:29
-Data estimata pentru livrare: 10.01.2025
-Numar telefon: 424241412424
-Email: test3@goron.com
-Adresa de livrare: doehwfiohwiofbw
-Status comanda: In asteptare
-
-Numar comanda: 3
-Comanda plasata pe: 08.01.2025 23:51:40
-Data estimata pentru livrare: 10.01.2025
-Numar telefon: 32414141
-Email: woejfwojf@dwd.cad
-Adresa de livrare: oawjfdwiofhwoifhw
-Status comanda: In asteptare
+Comanda plasata pe: 09.01.2025 11:35:17
+Data estimata pentru livrare: 17.01.2025
+Nume: goron
+Numar telefon: 123123123
+Email: gorm@gmail.com
+Adresa de livrare: asdasdasdasd
+Status comanda: In curs de livrare
+Cos: manu, benzina
 
