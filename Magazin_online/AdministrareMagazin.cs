@@ -175,7 +175,58 @@ public class AdministrareMagazin:Administrator
         }
     }
     
-    
+    public void Modificare_stoc_produs_pe_stoc(string nume_produs, int crestereSAUscadere)
+{
+    try
+    {
+        ProdusGeneric produs_ales = _magazin.Produse.FirstOrDefault(p => p.Nume == nume_produs);
+
+        if (produs_ales == null)
+        {
+            Console.WriteLine("Produsul tastat nu exista");
+            return;
+        }
+        
+        Validare.ValidareCantitateStoc(crestereSAUscadere,produs_ales.Stoc );
+        
+        produs_ales.Modificare_stoc(crestereSAUscadere);
+        Console.WriteLine("Stoc modificat cu succes");
+        
+        string[] lines = File.ReadAllLines(path);
+        
+        List<string> updatedLines = new List<string>();
+        
+        string produsDataModificat = $"{produs_ales.Nume}, {produs_ales.Pret}, {produs_ales.Stoc}";
+
+        foreach (var line in lines)
+        {
+            string[] parts = line.Split(',');
+
+            if (parts.Length >= 3 && parts[0].Trim() == produs_ales.Nume)
+            {
+                // Modificam linia corespunzătoare produsului
+                updatedLines.Add(produsDataModificat);
+            }
+            else
+            {
+                // Adaugam linia neschimbata
+                updatedLines.Add(line);
+            }
+
+        }
+        
+        File.WriteAllLines(path, updatedLines);
+        Console.WriteLine("Fișierul a fost actualizat cu succes.");
+    }
+    catch (ArgumentException ex)
+    {
+        Console.WriteLine($"Eroare: {ex.Message}");
+    }
+    catch (IOException ex)
+    {
+        Console.WriteLine($"Eroare la manipularea fișierului: {ex.Message}");
+    }
+}
 
     public void Stergere_produs_pe_stoc(string nume_produs)
     {
@@ -199,6 +250,52 @@ public class AdministrareMagazin:Administrator
         }
     }
     
+
+public void Adaugare_produs_perisabil(ProdusPerisabil produs)
+    {
+        try
+        {
+            EliminaLiniiDuplicate(path);
+            
+            Validare.ValidareNumeProdus(produs.Nume);
+            Validare.ValidarePret(produs.Pret);
+            Validare.ValidareStoc(produs.Stoc);
+            Validare.ValidareDataExpirare(produs.DataExpirare);
+            Validare.ValidareConditiiPastrare(produs.ConditiiDeDepozitare);
+            
+            _magazin.Produse.Add(produs);
+            
+            string produsData = $"{produs.Nume}, {produs.Pret}, {produs.Stoc}, {produs.DataExpirare.ToString("yyyy-MM-dd")}, {produs.ConditiiDeDepozitare}";
+            
+            if (File.Exists(path))
+            {
+                string[] lines = File.ReadAllLines(path);
+                
+                foreach (var line in lines)
+                {
+                    if (line.Trim() == produsData)
+                    {
+                        Console.WriteLine("Produsul există deja în fișier. Nu a fost adăugat.");
+                        return;
+                    }
+                }
+            }
+            
+            File.AppendAllText(path, produsData + Environment.NewLine);
+            Console.WriteLine("Produsul perisabil a fost adăugat cu succes și salvat în fișier.");
+        }
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine($"Eroare: {ex.Message}");
+        }
+        catch (IOException ex)
+        {
+            Console.WriteLine($"Eroare la salvarea fișierului: {ex.Message}");
+        }
+    }
+    
+    
+
     public void Modificare_stoc_produs_pe_stoc(string nume_produs, int crestereSAUscadere)
     {
         try
@@ -254,3 +351,31 @@ public class AdministrareMagazin:Administrator
         
     }
 }
+
+    private void ActualizeazaFisierComenzi(string fisierComenzi)
+    {
+        try
+        {
+            using (StreamWriter writer = new StreamWriter(fisierComenzi))
+            {
+                foreach (var comanda in comenzi)
+                {
+                    writer.WriteLine($"Număr comandă: {comanda.numar_comanda}");
+                    writer.WriteLine($"Comanda plasată pe: {comanda.data_livrare.ToString("dd.MM.yyyy HH:mm:ss")}");
+                    writer.WriteLine($"Data estimată pentru livrare: {comanda.data_livrare.AddDays(2).ToString("dd.MM.yyyy")}");
+                    writer.WriteLine($"Nume: {comanda.nume_persoana}");
+                    writer.WriteLine($"Număr telefon: {comanda.numar_telefon}");
+                    writer.WriteLine($"Email: {comanda.email}");
+                    writer.WriteLine($"Adresă de livrare: {comanda.adresa_livrare}");
+                    writer.WriteLine($"Status comandă: {comanda.status}");
+                    writer.WriteLine();
+                }
+            }
+
+            Console.WriteLine("Fișierul a fost actualizat cu succes.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Eroare la actualizarea fișierului: {ex.Message}");
+        }
+    }
