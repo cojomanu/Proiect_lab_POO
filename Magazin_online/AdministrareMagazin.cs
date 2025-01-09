@@ -405,27 +405,7 @@ public static void CreazaProdusDinFisier(AdministrareMagazin comenziAdministrato
         Console.WriteLine($"Eroare la salvarea fisierului: {ex.Message}");
     }
 }
-    // public void SalveazaComandaInFisier(string path, Comanda comanda)
-    // {
-    //     try
-    //     {
-    //         using (StreamWriter sw = new StreamWriter(path, true))
-    //         {
-    //             sw.WriteLine($"Numar comanda: {comanda.numar_comanda}");
-    //             sw.WriteLine($"Comanda plasata pe: {comanda.data_livrare.ToString("dd.MM.yyyy HH:mm:ss")}");
-    //             sw.WriteLine($"Data estimata pentru livrare: {comanda.data_livrare.AddDays(2).ToString("dd.MM.yyyy")}"); 
-    //             sw.WriteLine($"Numar telefon: {comanda.numar_telefon}");
-    //             sw.WriteLine($"Email: {comanda.email}");
-    //             sw.WriteLine($"Adresa de livrare: {comanda.adresa_livrare}");
-    //             sw.WriteLine($"Status comanda: {comanda.status}");
-    //             sw.WriteLine(); 
-    //         }
-    //     }
-    //     catch (Exception ex)
-    //     {
-    //         Console.WriteLine($"Eroare la salvarea comenzilor: {ex.Message}");
-    //     }
-    // }
+   
     
     public void SalveazaComandaInFisier(string path, Comanda comanda)
     {
@@ -441,7 +421,7 @@ public static void CreazaProdusDinFisier(AdministrareMagazin comenziAdministrato
                 sw.WriteLine($"Adresa de livrare: {comanda.adresa_livrare}");
                 sw.WriteLine($"Status comanda: {comanda.status}");
 
-                // Salvăm linia cu produsele din Cos
+                // Salvam linia cu produsele din Cos
                 if (comanda.Cos_produse.Cos_produse != null && comanda.Cos_produse.Cos_produse.Count > 0)
                 {
                     sw.WriteLine($"Cos: {string.Join(", ", comanda.Cos_produse.Cos_produse)}");
@@ -451,7 +431,7 @@ public static void CreazaProdusDinFisier(AdministrareMagazin comenziAdministrato
                     sw.WriteLine("Cos: (gol)");
                 }
 
-                sw.WriteLine(); // Linie goală pentru separarea comenzilor
+                sw.WriteLine(); 
             }
         }
         catch (Exception ex)
