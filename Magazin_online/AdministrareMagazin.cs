@@ -9,8 +9,8 @@ public class AdministrareMagazin:Administrator
         _magazin = magazin;
     }
     
-    static string path = "C:\\Users\\lucas\\RiderProjects\\Proiect_lab_POO\\Magazin_online\\produse.txt";
-    static string path_comenzi = "C:\\Users\\lucas\\RiderProjects\\Proiect_lab_POO\\Magazin_online\\comenzi.txt";
+    static string path = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect_magazin_online\\Magazin_online\\produse.txt";
+    static string path_comenzi = "C:\\Users\\POWERUSER\\RiderProjects\\Proiect_magazin_online\\Magazin_online\\comenzi.txt";
 
 //     public void IncarcaComenziDinFisier()
 // {

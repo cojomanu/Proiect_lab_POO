@@ -1,20 +1,20 @@
 Numar comanda: 0
-Comanda plasata pe: 09.01.2025 10:00:22
+Comanda plasata pe: 09.01.2025 10:54:38
 Data estimata pentru livrare: 11.01.2025
-Nume: Lucas
-Numar telefon: iehwqoifhq
-Email: dkqhd@ihiiwf.com
-Adresa de livrare: diohfioqqfq
-Status comanda: In asteptare
-Cos: benzina, telefon
+Nume: manu
+Numar telefon: 123123
+Email: manu@gmail.com
+Adresa de livrare: ahaahaahaaha
+Status comanda: In curs de livrare
+Cos: manu
 
 Numar comanda: 1
-Comanda plasata pe: 09.01.2025 10:00:38
+Comanda plasata pe: 09.01.2025 10:56:17
 Data estimata pentru livrare: 11.01.2025
-Nume: dhqiohdioqhdiq
-Numar telefon: dhqiodhqoihdq
-Email: ihfdiow@iohwiofh.com
-Adresa de livrare: diohqodhqopdhqd
+Nume: lucas
+Numar telefon: 0777777777
+Email: lucas@gmail.com
+Adresa de livrare: pestetotsiniciunde
 Status comanda: In curs de livrare
-Cos: benzina, telefon
+Cos: telefon
 
