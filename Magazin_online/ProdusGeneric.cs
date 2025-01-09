@@ -11,6 +11,12 @@ public class ProdusGeneric
     
     public int Stoc { get; private set; }
     
+    public ProdusGeneric(string nume)
+    {
+        Nume = nume;
+        Pret = 0;          // Valoare implicită
+        Stoc = 0;     // Valoare implicită
+    }
 
     public ProdusGeneric(string nume, decimal pret,int stoc)
     {

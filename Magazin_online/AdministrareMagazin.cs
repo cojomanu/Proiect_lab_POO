@@ -12,7 +12,91 @@ public class AdministrareMagazin:Administrator
     static string path = "C:\\Users\\lucas\\RiderProjects\\Proiect_lab_POO\\Magazin_online\\produse.txt";
     static string path_comenzi = "C:\\Users\\lucas\\RiderProjects\\Proiect_lab_POO\\Magazin_online\\comenzi.txt";
 
-    public void IncarcaComenziDinFisier()
+//     public void IncarcaComenziDinFisier()
+// {
+//     if (!File.Exists(path_comenzi))
+//     {
+//         Console.WriteLine("Fisierul cu comenzile plasate nu exista.");
+//         return;
+//     }
+//
+//     string[] liniiComenzi = File.ReadAllLines(path_comenzi);
+//     List<Comanda> listaComenzi = new List<Comanda>();
+//
+//     int numarComanda = 0;
+//     string nume = "";
+//     string telefon = "";
+//     string email = "";
+//     string adresa = "";
+//     string status = "";
+//     DateTime dataLivrare = DateTime.Now;
+//
+//     foreach (var linie in liniiComenzi)
+//     {
+//         if (linie.StartsWith("Numar comanda:"))
+//         {
+//             // Daca exista o comanda anterioara, o adaugam in lista
+//             if (!string.IsNullOrEmpty(nume))
+//             {
+//                 Comanda comanda = new Comanda(new Cos(), nume, telefon, email, adresa); // Cos ignorat
+//                 comanda.setStatus(status);
+//                 comanda.set_Data_livrare(dataLivrare);
+//                 comanda.numar_comanda = numarComanda;
+//                 listaComenzi.Add(comanda);
+//             }
+//             
+//             numarComanda = 0;
+//             nume = "";
+//             telefon = "";
+//             email = "";
+//             adresa = "";
+//             status = "";
+//             
+//             string numarComandaText = linie.Replace("Numar comanda:", "").Trim();
+//             int.TryParse(numarComandaText, out numarComanda);
+//         }
+//         else if (linie.StartsWith("Comanda plasata pe:"))
+//         {
+//             string dataComandaText = linie.Replace("Comanda plasata pe:", "").Trim();
+//             DateTime.TryParse(dataComandaText, out dataLivrare);
+//         }
+//         else if (linie.StartsWith("Nume:"))
+//         {
+//             nume = linie.Replace("Nume:", "").Trim();
+//         }
+//         else if (linie.StartsWith("Numar telefon:"))
+//         {
+//             telefon = linie.Replace("Numar telefon:", "").Trim();
+//         }
+//         else if (linie.StartsWith("Email:"))
+//         {
+//             email = linie.Replace("Email:", "").Trim();
+//         }
+//         else if (linie.StartsWith("Adresa de livrare:"))
+//         {
+//             adresa = linie.Replace("Adresa de livrare:", "").Trim();
+//         }
+//         else if (linie.StartsWith("Status comanda:"))
+//         {
+//             status = linie.Replace("Status comanda:", "").Trim();
+//         }
+//     }
+//     if (!string.IsNullOrEmpty(nume))
+//     {
+//         Comanda comanda = new Comanda(new Cos(), nume, telefon, email, adresa); // Cos ignorat
+//         comanda.setStatus(status);
+//         comanda.set_Data_livrare(dataLivrare);
+//         comanda.numar_comanda = numarComanda;
+//         listaComenzi.Add(comanda);
+//     }
+//     
+//     comenzi = listaComenzi;
+//
+//     Console.WriteLine("Comenzile au fost incarcate cu succes din fisier.");
+// }
+
+
+public void IncarcaComenziDinFisier()
 {
     if (!File.Exists(path_comenzi))
     {
@@ -30,6 +114,7 @@ public class AdministrareMagazin:Administrator
     string adresa = "";
     string status = "";
     DateTime dataLivrare = DateTime.Now;
+    Cos cosCurent = new Cos(); // Cosul curent al comenzii
 
     foreach (var linie in liniiComenzi)
     {
@@ -38,20 +123,22 @@ public class AdministrareMagazin:Administrator
             // Daca exista o comanda anterioara, o adaugam in lista
             if (!string.IsNullOrEmpty(nume))
             {
-                Comanda comanda = new Comanda(new Cos(), nume, telefon, email, adresa); // Cos ignorat
+                Comanda comanda = new Comanda(cosCurent, nume, telefon, email, adresa);
                 comanda.setStatus(status);
                 comanda.set_Data_livrare(dataLivrare);
                 comanda.numar_comanda = numarComanda;
                 listaComenzi.Add(comanda);
             }
-            
+
+            // Resetam variabilele pentru o noua comanda
             numarComanda = 0;
             nume = "";
             telefon = "";
             email = "";
             adresa = "";
             status = "";
-            
+            cosCurent = new Cos(); // Cream un nou cos pentru comanda urmatoare
+
             string numarComandaText = linie.Replace("Numar comanda:", "").Trim();
             int.TryParse(numarComandaText, out numarComanda);
         }
@@ -80,20 +167,34 @@ public class AdministrareMagazin:Administrator
         {
             status = linie.Replace("Status comanda:", "").Trim();
         }
+        else if (linie.StartsWith("Cos:"))
+        {
+            string cosText = linie.Replace("Cos:", "").Trim();
+            string[] produseNume = cosText.Split(", ");
+
+            foreach (var numeProdus in produseNume)
+            {
+                cosCurent.AdaugareProdusInCos(numeProdus); // Adaugam numele produsului direct in lista din Cos
+            }
+        }
     }
+
+    // Adaugam ultima comanda, daca exista
     if (!string.IsNullOrEmpty(nume))
     {
-        Comanda comanda = new Comanda(new Cos(), nume, telefon, email, adresa); // Cos ignorat
+        Comanda comanda = new Comanda(cosCurent, nume, telefon, email, adresa);
         comanda.setStatus(status);
         comanda.set_Data_livrare(dataLivrare);
         comanda.numar_comanda = numarComanda;
         listaComenzi.Add(comanda);
     }
-    
+
     comenzi = listaComenzi;
 
     Console.WriteLine("Comenzile au fost incarcate cu succes din fisier.");
 }
+
+
 
     public void EliminaLiniiDuplicate()
     {
@@ -304,6 +405,28 @@ public static void CreazaProdusDinFisier(AdministrareMagazin comenziAdministrato
         Console.WriteLine($"Eroare la salvarea fisierului: {ex.Message}");
     }
 }
+    // public void SalveazaComandaInFisier(string path, Comanda comanda)
+    // {
+    //     try
+    //     {
+    //         using (StreamWriter sw = new StreamWriter(path, true))
+    //         {
+    //             sw.WriteLine($"Numar comanda: {comanda.numar_comanda}");
+    //             sw.WriteLine($"Comanda plasata pe: {comanda.data_livrare.ToString("dd.MM.yyyy HH:mm:ss")}");
+    //             sw.WriteLine($"Data estimata pentru livrare: {comanda.data_livrare.AddDays(2).ToString("dd.MM.yyyy")}"); 
+    //             sw.WriteLine($"Numar telefon: {comanda.numar_telefon}");
+    //             sw.WriteLine($"Email: {comanda.email}");
+    //             sw.WriteLine($"Adresa de livrare: {comanda.adresa_livrare}");
+    //             sw.WriteLine($"Status comanda: {comanda.status}");
+    //             sw.WriteLine(); 
+    //         }
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         Console.WriteLine($"Eroare la salvarea comenzilor: {ex.Message}");
+    //     }
+    // }
+    
     public void SalveazaComandaInFisier(string path, Comanda comanda)
     {
         try
@@ -312,12 +435,23 @@ public static void CreazaProdusDinFisier(AdministrareMagazin comenziAdministrato
             {
                 sw.WriteLine($"Numar comanda: {comanda.numar_comanda}");
                 sw.WriteLine($"Comanda plasata pe: {comanda.data_livrare.ToString("dd.MM.yyyy HH:mm:ss")}");
-                sw.WriteLine($"Data estimata pentru livrare: {comanda.data_livrare.AddDays(2).ToString("dd.MM.yyyy")}"); 
+                sw.WriteLine($"Data estimata pentru livrare: {comanda.data_livrare.AddDays(2).ToString("dd.MM.yyyy")}");
                 sw.WriteLine($"Numar telefon: {comanda.numar_telefon}");
                 sw.WriteLine($"Email: {comanda.email}");
                 sw.WriteLine($"Adresa de livrare: {comanda.adresa_livrare}");
                 sw.WriteLine($"Status comanda: {comanda.status}");
-                sw.WriteLine(); 
+
+                // Salvăm linia cu produsele din Cos
+                if (comanda.Cos_produse.Cos_produse != null && comanda.Cos_produse.Cos_produse.Count > 0)
+                {
+                    sw.WriteLine($"Cos: {string.Join(", ", comanda.Cos_produse.Cos_produse)}");
+                }
+                else
+                {
+                    sw.WriteLine("Cos: (gol)");
+                }
+
+                sw.WriteLine(); // Linie goală pentru separarea comenzilor
             }
         }
         catch (Exception ex)
@@ -325,6 +459,7 @@ public static void CreazaProdusDinFisier(AdministrareMagazin comenziAdministrato
             Console.WriteLine($"Eroare la salvarea comenzilor: {ex.Message}");
         }
     }
+
     public void Adaugare_comanda_in_lista_comenzi(Comanda comanda)
     {
         try
@@ -499,6 +634,34 @@ public void Modificare_stoc_produs_pe_stoc(string nume_produs, int crestereSAUsc
     }
 
 
+    // private void ActualizeazaFisierComenzi(string fisierComenzi)
+    // {
+    //     try
+    //     {
+    //         using (StreamWriter writer = new StreamWriter(fisierComenzi))
+    //         {
+    //             foreach (var comanda in comenzi)
+    //             {
+    //                 writer.WriteLine($"Numar comanda: {comanda.numar_comanda}");
+    //                 writer.WriteLine($"Comanda plasata pe: {comanda.data_livrare.ToString("dd.MM.yyyy HH:mm:ss")}");
+    //                 writer.WriteLine($"Data estimata pentru livrare: {comanda.estimare_data_livrare.ToString("dd.MM.yyyy")}");
+    //                 writer.WriteLine($"Nume: {comanda.nume_persoana}");
+    //                 writer.WriteLine($"Numar telefon: {comanda.numar_telefon}");
+    //                 writer.WriteLine($"Email: {comanda.email}");
+    //                 writer.WriteLine($"Adresa de livrare: {comanda.adresa_livrare}");
+    //                 writer.WriteLine($"Status comanda: {comanda.status}");
+    //                 writer.WriteLine();
+    //             }
+    //         }
+    //
+    //         Console.WriteLine("Fisierul a fost actualizat cu succes.");
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         Console.WriteLine($"Eroare la actualizarea fisierului: {ex.Message}");
+    //     }
+    // }
+    
     private void ActualizeazaFisierComenzi(string fisierComenzi)
     {
         try
@@ -515,7 +678,18 @@ public void Modificare_stoc_produs_pe_stoc(string nume_produs, int crestereSAUsc
                     writer.WriteLine($"Email: {comanda.email}");
                     writer.WriteLine($"Adresa de livrare: {comanda.adresa_livrare}");
                     writer.WriteLine($"Status comanda: {comanda.status}");
-                    writer.WriteLine();
+
+                    // Salvăm linia cu produsele din Cos
+                    if (comanda.Cos_produse.Cos_produse != null && comanda.Cos_produse.Cos_produse.Count > 0)
+                    {
+                        writer.WriteLine($"Cos: {string.Join(", ", comanda.Cos_produse.Cos_produse)}");
+                    }
+                    else
+                    {
+                        writer.WriteLine("Cos: (gol)");
+                    }
+
+                    writer.WriteLine(); // Linie goală pentru separarea comenzilor
                 }
             }
 
@@ -526,6 +700,7 @@ public void Modificare_stoc_produs_pe_stoc(string nume_produs, int crestereSAUsc
             Console.WriteLine($"Eroare la actualizarea fisierului: {ex.Message}");
         }
     }
+
 
     
     public void Procesare_comenzi_status(int care_comanda, int ok)

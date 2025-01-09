@@ -52,7 +52,7 @@ while (!exit)
         switch (mod)
         {
             case 1:
-                Cos cos= new Cos(); 
+                Cos cos= new Cos();
                 bool iesire_utilizator = false;
                 while (!iesire_utilizator)
                 {
@@ -139,7 +139,7 @@ while (!exit)
                                     care_produs = i;
                             if (care_produs!=-1)
                             {
-                                cos.AdaugareProdusInCos(magazin1.Produse[care_produs]);
+                                cos.AdaugareProdusInCos(magazin1.Produse[care_produs].Nume);
                                 Console.WriteLine("Produs adaugat in cos!");
                             }
                             else
@@ -183,6 +183,7 @@ while (!exit)
 
                                         // Adaugam comanda in lista de comenzi
                                         comenziAdministrator.Adaugare_comanda_in_lista_comenzi(comandaUtilizator);
+                                        cos.Golire_cos();
                                         break;
                                     case 2:
                                         Console.WriteLine("Comanda nu a fost plasata");
