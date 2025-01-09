@@ -19,7 +19,7 @@ void mesaj_caractere()
 Magazin magazin1 = new Magazin("magazin1");
 string parola = "parola";
 bool exit = false;
-
+bool sunt_user = false;
 ComenziUtilizator comenziUtilizator = new ComenziUtilizator(magazin1);
 AdministrareMagazin comenziAdministrator = new AdministrareMagazin(magazin1);
 AdministrareMagazin.CreazaProdusDinFisier(comenziAdministrator);
@@ -52,6 +52,7 @@ while (!exit)
         switch (mod)
         {
             case 1:
+                sunt_user = true;
                 // Cos cos= new Cos();
                 bool iesire_utilizator = false;
                 while (!iesire_utilizator)
@@ -183,6 +184,7 @@ while (!exit)
 
                                         // Adaugam comanda in lista de comenzi
                                         comenziAdministrator.Adaugare_comanda_in_lista_comenzi(comandaUtilizator);
+                                        
                                         // cos.Golire_cos();
                                         break;
                                     case 2:
@@ -519,7 +521,8 @@ while (!exit)
                             break;
                         case 6:
                             iesire_administrator = true;
-                            cos.Golire_cos();
+                            if(sunt_user==false)
+                                cos.Golire_cos();
                             break;
                         default:
                             Console.WriteLine("Optiune invalida");
