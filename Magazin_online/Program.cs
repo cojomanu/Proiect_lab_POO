@@ -9,6 +9,8 @@ Console.ResetColor();
 Console.WriteLine("Eroare cu alb semnifica ca eroarea scrisa cu rosu a fost aruncata si astfel operatia curenta gresita a fost oprita");
 Console.WriteLine();
 Console.WriteLine();
+Console.WriteLine();
+
 
 void mesaj_caractere()
 {
