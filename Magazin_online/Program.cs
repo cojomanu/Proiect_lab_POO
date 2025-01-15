@@ -10,6 +10,8 @@ Console.WriteLine("Eroare cu alb semnifica ca eroarea scrisa cu rosu a fost arun
 Console.WriteLine();
 Console.WriteLine();
 Console.WriteLine();
+Console.WriteLine();
+
 
 
 void mesaj_caractere()
